@@ -8,7 +8,7 @@ import SiteFooter from '@/app/components/layouts/SiteFooter/SiteFooter';
 
 // Googleフォント
 const notojp = Noto_Sans_JP({
-  weight: ["100"],
+  weight: ["300"],
   subsets: ["latin"],
   display: "swap",
 });
