@@ -22,9 +22,7 @@ const Contents = ({ sidekickData, photographListData, snapshotListData }) => {
       <main className={`${styles.wrapper} ${isAnimation ? styles.animation : ''}`}>
         <i className={`${styles.scrollIcon} ${isAnimation ? styles.animation : ''}`}></i>
         <Description sidekickData={sidekickData} />   
-
-        {sidekickData.movie.length >= 1 ? <Movie sidekickData={sidekickData} /> : null}
-
+        {sidekickData.movie.length >= 1 && isAnimation ? <Movie sidekickData={sidekickData} /> : null}
         {photographListData.contents.length >= 1 ?
           <PhotoSlider
             sectionName='photograph'
@@ -38,10 +36,7 @@ const Contents = ({ sidekickData, photographListData, snapshotListData }) => {
             photoListData={snapshotListData.contents}
           /> 
           : null
-        }        
-
-
-       
+        }
       </main>
     </>
   );

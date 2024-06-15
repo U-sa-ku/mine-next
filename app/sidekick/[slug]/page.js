@@ -27,7 +27,6 @@ export async function generateMetadata({ params }) {
 
 export default async function sidekick({ params }) {
   const sidekickData  = await getSidekickData(params.slug);
-
   const photographListData  = await getPhotoListData(10, 'photograph', params.slug);
   const snapshotListData  = await getPhotoListData(10, 'snapshot', params.slug);
 
