@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image';
 import styles from '@/app/components/elements/PageLoading/PageLoading.module.scss';
 import LogoMineM from '@/public/logo_mine_m.svg';
@@ -10,7 +10,6 @@ import LogoMineE from '@/public/logo_mine_e.svg';
 
 export default function Loading() {
   const pathname = usePathname()
-  const searchParams = useSearchParams()
   const [isMounted, setIsMounted] = useState(false);
     
   useEffect(() => {
@@ -19,13 +18,17 @@ export default function Loading() {
     // ページ読み込み時
     setTimeout(() => {
       setIsMounted(true);
-    }, 550);
+    }, 700);
 
     // ページ遷移開始時
     links.forEach((link) => {
-      link.addEventListener("click", () => {
-        setIsMounted(false);
-      });
+      const href = new URL(link.href);
+      
+      if(href.pathname != pathname) {
+        link.addEventListener("click", () => {
+          setIsMounted(false);
+        });
+      }
     });
 
     return () => {
@@ -35,7 +38,7 @@ export default function Loading() {
         });
       });  
     }
-  }, [pathname, searchParams])
+  }, [pathname])
 
   return (
     <div className={`${styles.wrapper} ${isMounted ? styles.hidden : ''}`}>
