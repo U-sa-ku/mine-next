@@ -1,0 +1,93 @@
+@use '@/app/styles/variables' as v;
+
+.wrapper {
+  padding: 150px 0px 0px;
+  @media (max-width: 999px) {
+    padding-top: 90px;
+  }
+  @media (max-width: 767px) {
+    padding: 90px 0px 0px;
+  }
+}
+.list {
+  list-style-type: none;
+  margin-bottom: 30px;
+  padding: 0px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  @media (min-width: 1921px) {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+.listItem {
+  padding-bottom: 100%;
+  position: relative;
+}
+.link {
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  background-color: #000000;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  display: block;
+  @media (min-width: 769px) {
+    &:hover {
+      .frame {
+        transform: scale(1);
+      }
+    }
+  }
+}
+.image {
+  height: 100%;
+  position: relative;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.frame {
+  background-color: #ffffff;
+  position: absolute;
+  z-index: 2;
+  transform: scale(0);
+  transition: 0.5s;
+  $borderOffset: 10px;
+  $borderWidth: 1px;
+  &.top {
+    width: calc(100% - #{$borderOffset*2});
+    height: $borderWidth;
+    left: $borderOffset;
+    top: $borderOffset;
+    transform-origin: 0% 0%;
+  }
+  &.right {
+    width: $borderWidth;
+    height: calc(100% - #{$borderOffset*2});
+    right: $borderOffset;
+    top: $borderOffset;
+    transform-origin: 100% 0%;
+  }
+  &.bottom {
+    width: calc(100% - #{$borderOffset*2});
+    height: $borderWidth;
+    left: $borderOffset;
+    bottom: $borderOffset;
+    transform-origin: 100% 100%;
+  }
+  &.left {
+    width: $borderWidth;
+    height: calc(100% - #{$borderOffset*2});
+    left: $borderOffset;
+    top: $borderOffset;
+    transform-origin: 0% 100%;
+  }
+}

@@ -1,0 +1,31 @@
+@use '@/app/styles/variables' as v;
+
+.wrapper {
+  color: v.$color_lightGray;
+  font-size: 4rem;
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-bottom: 70px;
+  position: relative;
+  @media (max-width: 999px) {
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+  }
+  &:before {
+    content: "";
+    width: 100px;
+    height: 2px;
+    background: v.$gradient_primary;
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: -25px;
+    z-index: 1;
+    transform: translateX(-50%);
+    @media (max-width: 999px) {
+      width: 70px;
+      bottom: -16px;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.contentsWrapper {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-bottom: 300px;
+  overflow: hidden;
+  position: relative;
+  @media (max-width: 999px) {
+    padding-bottom: 200px;
+  }
+}

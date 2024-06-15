@@ -1,0 +1,43 @@
+@use '@/app/styles/variables' as v;
+
+.wrapper {
+  list-style-type: none;
+  padding-left: 0px;
+  display: flex;
+  justify-content: center;
+}
+.item {
+  border-radius: 100%;
+  margin: 0px 10px;
+  transition: 0.3s;
+  @media (max-width: 767px) {
+    margin: 0px 5px;
+  }
+  @mixin paginationHoverActive {
+    color: v.$color_middleGray;
+    background-color: v.$color_lightGray;
+  }
+  @media (min-width: 769px) {
+    cursor: pointer;
+    &:hover {
+      @include paginationHoverActive;
+    }
+  }
+  &.current {
+    @include paginationHoverActive;
+  }  
+}
+.text {
+  width: 30px;
+  height: 30px;
+  color: inherit;
+  font-size: 1.6rem;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 999px) {
+    font-size: 1.4rem;
+  }
+}

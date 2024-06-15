@@ -1,0 +1,25 @@
+@use '@/app/styles/variables' as v;
+
+.layoutWrapper {
+  width: 100%;
+  background: v.$gradient_primary;
+  padding: 20px 0px;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  z-index: 1;
+  @media (max-width: 999px) {
+    text-align: center;
+    padding: 10px 0px;
+    display: block;
+  }
+}
+.copyright {
+  color: #ffffff;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-align: center;
+  @media (max-width: 999px) {
+    font-size: 0.8rem;
+  }
+}

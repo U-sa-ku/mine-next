@@ -1,0 +1,19 @@
+@use '@/app/styles/variables' as v;
+
+html {
+  font-size: 62.5%;
+}
+body {
+  color: v.$color_lightGray;
+  background-color: v.$color_middleGray;
+}
+
+.otherContents {
+  background-color: v.$color_darkGray;
+  margin: 200px 0px -246px;
+  padding-bottom: 245px;
+  @media (max-width: 999px) {
+    margin: 100px 0px -166px;
+    padding-bottom: 165px;
+  }
+}

@@ -1,0 +1,48 @@
+.wrapper {
+  width: 20%;
+  max-width: 80px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  transform: translate3d(-50%, -50%, 1px);
+  transition: 0.3s;
+  pointer-events: none;
+  @media (max-width: 999px) {
+    max-width: 60px;
+  }
+  &.loaded {
+    opacity: 0;
+  }
+}
+.logo {
+  opacity: 0.3;
+  animation: spin 2s infinite;
+}
+@keyframes spin {
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
+}

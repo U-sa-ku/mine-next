@@ -1,0 +1,144 @@
+@use '@/app/styles/variables' as v;
+
+.wrapper {
+  width: 100%;
+  height: 65vw;
+  background: v.$gradient_primary;
+  padding: 10px;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 0;
+  @media (max-width: 999px) {
+    padding: 5px;
+  }
+  @media (max-width: 767px) {
+    height: 140vw;
+  }
+  @media (min-width: 1441px) {
+    height: 95vh;
+  }
+}
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: static !important;
+}
+.catchphrase {
+  width: calc(100% - 300px);
+  color: v.$color_lightGray;
+  font-size: 2.4vw;
+  line-height: 1;
+  letter-spacing: -0.5em;
+  mix-blend-mode: exclusion;
+  position: absolute;
+  left: 3vw;
+  z-index: 2;
+  opacity: 0;
+  transform-origin: 100% 0%;
+  transition: 1s;
+  @media (max-width: 767px) {
+    left: 4vw;
+  }
+  &.row1 {
+    top: 3vw;
+    @media (max-width: 767px) {
+      top: 12vw;
+    }
+  }
+  &.row2 {
+    top: 6vw;
+    @media (max-width: 767px) {
+      top: 20vw;
+    }
+  }
+  @media (max-width: 767px) {
+    width: calc(100% - 120px);
+    font-size: 4.5vw;
+  }
+  &.animation {
+    letter-spacing: 0.2em;
+    opacity: 1;
+  }
+}
+.title {
+  width: 100%;
+  color: v.$color_lightGray;
+  font-size: 6vw;
+  font-weight: 300;
+  line-height: 1;
+  text-align: right;
+  mix-blend-mode: exclusion;
+  position: absolute;
+  right: 0vw;
+  bottom: 0vw;
+  z-index: 2;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: 0% 100%;
+  transition: 1s + 0.5s;
+  @media (max-width: 767px) {
+    font-size: 10.3vw;
+  }
+  &.animation {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  &Inner {
+    display: inline-block;
+  }  
+}
+.since {
+  color: v.$color_lightGray;
+  font-size: 1.6vw;
+  font-weight: 100;
+  letter-spacing: 0.1em;
+  position: absolute;
+  right: 0px;
+  bottom: -2vw;
+  z-index: 1;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: 0% 100%;
+  transition: 1s + 1s;
+  @media (max-width: 767px) {
+    font-size: 3.4vw;
+    bottom: -6vw;
+  }
+  &.animation {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+.initImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: 3s;
+  &.visible {
+    opacity: 1;
+  }  
+  &Wrapper {
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    background-color: #000000;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 1;
+    opacity: 1;
+    transition: 2s 1.5s;
+    @media (max-width: 999px) {
+      width: calc(100% - 10px);
+      height: calc(100% - 10px);
+      left: 5px;
+      top: 5px;
+    }
+    &.animation {
+      opacity: 0;
+    }
+  }
+}

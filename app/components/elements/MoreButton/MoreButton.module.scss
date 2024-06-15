@@ -1,0 +1,35 @@
+@use '@/app/styles/variables' as v;
+
+.wrapper {
+  text-align: center;
+}
+.link {
+  color: inherit;
+  font-size: 2rem;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  position: relative;
+  @media (max-width: 999px) {
+    font-size: 1.6rem;
+  }
+  &:before {
+    content: "";
+    width: calc(100% + 40px);
+    height: 50%;
+    border-width: 0px 1.5px 1px 0px;
+    border-style: solid;
+    border-color: v.$color_lightGray;
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    z-index: 0;
+    transform: translateX(-50%) skewX(45deg);
+    transition: 0.3s;
+  }
+  @media (min-width: 769px) {
+    &:hover:before {
+      transform: translateX(calc(-50% + 10px)) skewX(45deg);
+    }
+  }
+}

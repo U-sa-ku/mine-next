@@ -1,0 +1,107 @@
+@use '@/app/styles/variables' as v;
+
+.blockWrapper {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background-color: v.$color_middleGray;
+  padding: 10px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 9;
+  transform: translateX(100%);
+  transition: 0.5s;
+  box-sizing: border-box;
+  &.active {
+    transform: translateX(0%);
+  }
+  @media (max-width: 767px) {
+    padding: 5px;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 100%;
+    grid-gap: 5px;
+  }
+  &.top {
+    position: relative;
+    z-index: 1;
+    &.fixed {
+      position: fixed;
+    }
+    .item {
+      .image {
+        transition: 1s ease-out;
+        &.animation {
+          transform: translate(0%, 0%) !important;
+        }
+      }
+      &:nth-of-type(1) .image {
+        transform: translateY(-100%);
+      }
+      &:nth-of-type(2) .image {
+        transform: translateX(-100%);
+      }            
+      &:nth-of-type(3) .image {
+        transform: translateY(100%);
+      }
+    }
+  }  
+}
+.item {
+  color: inherit;
+  display: block;
+  overflow: hidden;
+  transition: 0.3s;
+  position: relative;
+  @media (min-width: 769px) {
+    filter: grayscale(100%) contrast(120%);
+    &:hover {
+      filter: grayscale(0%) contrast(1);
+      .navigation__caption {
+        opacity: 1;
+      }
+    }
+  }   
+  &:nth-child(1) {
+    grid-area: 1 / 1 / 6 / 2;
+    @media (max-width: 767px) {
+      grid-area: 1 / 1 / 4 / 2;
+    }
+  }
+  &:nth-child(2) {
+    grid-area: 1 / 2 / 3 / 3;
+    @media (max-width: 767px) {
+      grid-area: 4 / 1 / 6 / 2;
+    }
+  }
+  &:nth-child(3) {
+    grid-area: 3 / 2 / 6 / 3;
+    @media (max-width: 767px) {
+      grid-area: 6 / 1 / 9 / 2;
+    }
+  }    
+}
+.caption {
+  font-size: 9vw;
+  font-weight: 100;
+  line-height: 1;
+  position: absolute;
+  right: -0.5vw;
+  bottom: -0.9vw;
+  z-index: 1;
+  opacity: 1;
+  mix-blend-mode: exclusion;
+  transition: 0.3s;
+  @media (max-width: 767px) {
+    font-size: 17vw;
+  }
+}
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

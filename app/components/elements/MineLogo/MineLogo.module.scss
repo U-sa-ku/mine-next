@@ -1,0 +1,20 @@
+.rect01,
+.path01 {
+  fill:transparent;
+  stroke:#FFFFFF;
+  stroke-width: 3;
+  stroke-miterlimit:10;
+  transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715), fill 1.3s cubic-bezier(0.47, 0, 0.745, 0.715) 1s;
+  &.animation {
+    stroke-dashoffset: 0;
+    fill: rgb(255, 255, 255);
+  }
+}
+.rect01 {
+  stroke-dashoffset: 242px;
+  stroke-dasharray: 242px;
+}
+.path01 {
+  stroke-dashoffset: 2160.796875px;
+  stroke-dasharray: 2160.796875px;
+}

@@ -1,0 +1,145 @@
+@use '@/app/styles/variables' as v;
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  margin-bottom: 200vh;
+  position: relative;
+  z-index: 2;
+  &:before {
+    content: "";
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    background: v.$gradient_primary;
+    display: block;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 0;
+    opacity: 0.98;
+  }
+  &.switchMargin {
+    margin-top: 100vh;
+    margin-bottom: 0vh;
+  }
+}
+.logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  svg {
+    width: 100px;
+    margin-bottom: 5px;
+    display: block;
+    &:last-child {
+      margin-bottom: 0px;
+    }
+    @media (max-width: 768px) {
+      width: 70px;
+    }
+  }
+}
+.scrollIcon {
+  width: 1px;
+  height: 10%;
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  z-index: 1;
+  transform: translateX(-50%);
+  overflow: hidden;
+  opacity: 0;
+  transition: 1s 1s;
+  @media (max-width: 768px) {
+    bottom: 5px;
+  }
+  &:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    display: block;
+    animation: 2s scrollIconBorder infinite;
+  }
+  @keyframes scrollIconBorder {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+  &.animation {
+    opacity: 1;
+  }
+}
+.frame {
+  background-color: #ffffff;
+  position: absolute;
+  z-index: 2;
+  transform: scale(0);
+  transition: 1s;
+  &.animation {
+    transform: scale(1);
+  }
+  $borderOffset: 6px;
+  $borderWidth: 1px;
+  $borderOffsetSp: 4px;
+  $borderWidthSp: 1px;
+  &.top {
+    width: calc(100% - #{$borderOffset*2});
+    height: $borderWidth;
+    left: $borderOffset;
+    top: $borderOffset;
+    transform-origin: 0% 0%;
+    @media (max-width: 768px) {
+      width: calc(100% - #{$borderOffsetSp*2});
+      height: $borderWidthSp;
+      left: $borderOffsetSp;
+      top: $borderOffsetSp;
+    }
+  }
+  &.right {
+    width: $borderWidth;
+    height: calc(100% - #{$borderOffset*2});
+    right: $borderOffset;
+    top: $borderOffset;
+    transform-origin: 100% 0%;
+    @media (max-width: 768px) {
+      width: $borderWidthSp;
+      height: calc(100% - #{$borderOffsetSp*2});
+      right: $borderOffsetSp;
+      top: $borderOffsetSp;
+    }
+  }
+  &.bottom {
+    width: calc(100% - #{$borderOffset*2});
+    height: $borderWidth;
+    left: $borderOffset;
+    bottom: $borderOffset;
+    transform-origin: 100% 100%;
+    @media (max-width: 768px) {
+      width: calc(100% - #{$borderOffsetSp*2});
+      height: $borderWidthSp;
+      left: $borderOffsetSp;
+      bottom: $borderOffsetSp;
+    }
+  }
+  &.left {
+    width: $borderWidth;
+    height: calc(100% - #{$borderOffset*2});
+    left: $borderOffset;
+    top: $borderOffset;
+    transform-origin: 0% 100%;
+    @media (max-width: 768px) {
+      width: $borderWidthSp;
+      height: calc(100% - #{$borderOffsetSp*2});
+      left: $borderOffsetSp;
+      top: $borderOffsetSp;
+    }
+  }
+}
