@@ -2,7 +2,7 @@
     "theme_color": "#252525",
     "background_color": "#252525",
     "display": "fullscreen",
-    "scope": "/mine/",
+    "scope": "/",
     "start_url": "/",
     "name": "mine",
     "short_name": "mine",
