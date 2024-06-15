@@ -7,18 +7,11 @@
   position: fixed;
   left: 0px;
   top: 0px;
-  z-index: 8;
-  @keyframes fadeOut {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 0;
-      z-index: -1;
-    }
+  z-index: 9;
+  pointer-events: none;
+  transition: 0.5s;
+  &.hidden {
+   opacity: 0;
   }
 }
 .logo {

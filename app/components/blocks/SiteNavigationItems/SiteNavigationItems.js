@@ -33,15 +33,17 @@ const SiteNavigationItems = ({ isActive, isTop, isFixed, imageAnimation, hamburg
       isLoadedImagesTemp[index] = true;
       return isLoadedImagesTemp;
     });
-
-    if(imageAnimation) {
-      imageAnimation();
-    }
   }
 
   useEffect(() => {
     if (isLoadedImages.every(Boolean)) {
-      setIsImageAnimation(true);
+      setTimeout(() => {
+        setIsImageAnimation(true);
+        
+        if(imageAnimation) {
+          imageAnimation();
+        }         
+      }, 1000);     
     }
   }, [isLoadedImages]);
 
