@@ -1,3 +1,5 @@
+"use client";
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from "@/app/components/sections/PhotoList/PhotoList.module.scss";
 import SectionTitle from "@/app/components/elements/SectionTitle/SectionTitle";
@@ -5,8 +7,14 @@ import LazyAnimationImage from "@/app/components/elements/LazyAnimationImage/Laz
 import Pagination from "@/app/components/elements/Pagination/Pagination";
 
 const PhotoList = ({ sectionName, photoListData, totalPages, currentPage }) => {
+  const [isAnimation, setIsAnimation] = useState(false);
+
+  useEffect(() => {
+    setIsAnimation(true);
+  }, [])
+
   return (
-    <section className={styles.wrapper}>
+    <section className={`${styles.wrapper} ${isAnimation ? styles.animation : ''}`}>
       <SectionTitle title={sectionName} />
       <ul className={styles.list}>
         {photoListData.map((data, index) => (
