@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import { Barlow } from 'next/font/google';
 import styles from "@/app/components/sections/PhotoPreview/PhotoPreview.module.scss";

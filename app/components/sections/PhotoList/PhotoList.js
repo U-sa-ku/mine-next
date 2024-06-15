@@ -1,4 +1,3 @@
-"use client";
 import Link from 'next/link';
 import styles from "@/app/components/sections/PhotoList/PhotoList.module.scss";
 import SectionTitle from "@/app/components/elements/SectionTitle/SectionTitle";
