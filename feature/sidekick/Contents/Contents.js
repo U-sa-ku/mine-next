@@ -1,14 +1,14 @@
 "use client";
 import { useState } from 'react';
 import styles from '@/feature/sidekick/Contents/Contents.module.scss';
-import LazyAnimationImage from "@/app/components/elements/LazyAnimationImage/LazyAnimationImage";
 import Mainvisual from '@/feature/sidekick/Mainvisual/Mainvisual';
+import Description from '@/feature/sidekick/Description/Description';
 import PhotoSlider from "@/app/components/sections/PhotoSlider/PhotoSlider";
 
 const Contents = ({ sidekickData, photographListData, snapshotListData }) => {
   const [isAnimation, setIsAnimation] = useState(false);
 
-  const animation = () => {
+  const contentsAnimation = () => {
     setIsAnimation(true);
   }
 
@@ -16,34 +16,11 @@ const Contents = ({ sidekickData, photographListData, snapshotListData }) => {
     <>
       <Mainvisual
         sidekickData={sidekickData}
-        contentsAnimation={animation}
-      />
-      <div className={`${styles.wrapper}`}>
+        contentsAnimation={contentsAnimation}
+      />     
+      <main className={`${styles.wrapper} ${isAnimation ? styles.animation : ''}`}>
         <i className={`${styles.scrollIcon} ${isAnimation ? styles.animation : ''}`}></i>
-        <section className={`${styles.inner} ${isAnimation ? styles.animation : ''}`}>
-          <div className={styles.title} dangerouslySetInnerHTML={{ __html: sidekickData.description_title }} />
-          <div>
-            {sidekickData.description_body.map((data, index) => (
-              <div
-                key={index}
-                className={styles.body}
-              >
-                <div className={styles.imageWrapper}>
-                  <LazyAnimationImage
-                    fill
-                    src={data.image.url}
-                    alt={`${sidekickData.name}の写真${index}`}
-                    sizes="(max-width: 767px) 100vw, 50vw"
-                    className={styles.image}
-                  />
-                </div>
-                <div className={styles.leadWrapper}>
-                  <div className={styles.lead} dangerouslySetInnerHTML={{ __html: data.lead }} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        <Description sidekickData={sidekickData} />        
         <PhotoSlider
           sectionName='photograph'
           photoListData={photographListData.contents}
@@ -52,7 +29,7 @@ const Contents = ({ sidekickData, photographListData, snapshotListData }) => {
           sectionName='snapshot'
           photoListData={snapshotListData.contents}
         />        
-      </div>
+      </main>
     </>
   );
 }
