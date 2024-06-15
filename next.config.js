@@ -1,6 +1,5 @@
-/** @type {import('next').NextConfig} */
-
-import path from 'path';
+const path = require('path');
+const withPWA = require("next-pwa");
 
 const nextConfig = {
   webpack: (config, { isServer }) => {
@@ -27,4 +26,13 @@ const nextConfig = {
   trailingSlash: true,
 };
 
-export default nextConfig;
+module.exports = withPWA({
+  pwa: {
+    dest: "public",
+    register: true,
+    skipWaiting: true,
+  },
+  reactStrinctMode: true,
+});
+
+module.exports = nextConfig;

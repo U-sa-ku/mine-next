@@ -16,6 +16,11 @@ const notojp = Noto_Sans_JP({
 export default function RootLayout({ children }) {
   return (
     <html lang="ja">
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/icon.png"></link>
+        <meta name="theme-color" content="#252525" />
+      </head>      
       <body className={notojp.className}>
         <PageLoading />
         <div className={styles.contentsWrapper}>
