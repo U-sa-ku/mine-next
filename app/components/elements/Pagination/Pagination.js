@@ -19,7 +19,7 @@ const Pagination = ({ sectionName, totalPages, currentPage }) => {
         >
           <Link
             href={`/${sectionName}/${index + 1}/`}
-            className={`${barlow.className} ${styles.text}`}
+            className={`${barlow.className} ${styles.link}`}
           >
             {index + 1}
           </Link>
