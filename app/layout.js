@@ -14,7 +14,7 @@ const notojp = Noto_Sans_JP({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="jp">
+    <html lang="ja">
       <body className={notojp.className}>
         <div className={styles.contentsWrapper}>
           <SiteNavigation />
