@@ -16,9 +16,7 @@ export default function Loading() {
     const links = document.querySelectorAll('a');
 
     // ページ読み込み時
-    setTimeout(() => {
-      setIsMounted(true);
-    }, 700);
+    setIsMounted(true);
 
     // ページ遷移開始時
     links.forEach((link) => {

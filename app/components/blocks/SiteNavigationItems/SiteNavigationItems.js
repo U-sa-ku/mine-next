@@ -38,14 +38,14 @@ const SiteNavigationItems = ({ isActive, isTop, isFixed, imageAnimation, hamburg
       if(imageAnimation) {
         imageAnimation();
       }
-    }, 1000);    
+    }, 500);    
   }
 
   useEffect(() => {
     if (isLoadedImages.every(Boolean)) {
       setTimeout(() => {
         setIsImageAnimation(true);
-      }, 1000);     
+      }, 500);     
     }
   }, [isLoadedImages]);
 
