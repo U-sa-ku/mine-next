@@ -1,3 +1,5 @@
+export const fetchCache = 'force-no-store';
+
 import { getSidekickData, getPhotoListData } from "@/libs/GetPostData"
 import Contents from '@/feature/sidekick/Contents/Contents';
 
