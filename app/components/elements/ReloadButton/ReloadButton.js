@@ -7,34 +7,36 @@ import Icon from '@/public/icon_reload.svg';
 export default function Loading() {
   const [isPwa, setIsPwa] = useState(false);
 
+  // リロード
   const windowReload = () => {
     location.reload();
   }
 
-  useEffect(() => {
-    if(window.matchMedia('(display-mode: standalone)').matches){
+  // PWA判定
+  const checkPwaMode = () => {
+    if(window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
       setIsPwa(true);
     } else {
       setIsPwa(false);
     }
-  }, [])
+  }
+
+  useEffect(() => {
+    checkPwaMode();
+    window.addEventListener('resize', checkPwaMode);
+    return () => window.removeEventListener('resize', checkPwaMode);
+  }, []);
 
   return (
-    <>
-      {isPwa ?
-         <div
-          className={styles.wrapper}
-          onClick={windowReload}
-        >
-          <Image
-            src={Icon}
-            alt="更新ボタン"
-            className={styles.icon}
-          />
-        </div>
-        :
-        null
-      }
-    </>
+    <div
+      className={`${styles.wrapper} ${isPwa ? styles.active : ''}`}
+      onClick={windowReload}
+    >
+      <Image
+        src={Icon}
+        alt="更新ボタン"
+        className={styles.icon}
+      />
+    </div>
   );
 }

@@ -9,7 +9,7 @@ const SiteHeader = ({ isScrollAnimation }) => {
   const [isAnimation, setIsAnimation] = useState(false);
 
   const switchVisible = () => {
-    const triggerPosition =  window.innerHeight;
+    const triggerPosition =  window.innerHeight * 0.5;
     const scrollTop = window.scrollY;
 
     if(scrollTop >= triggerPosition) {

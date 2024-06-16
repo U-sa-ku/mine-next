@@ -4,6 +4,10 @@
   top: 13px;
   z-index: 10;
   cursor: pointer;
+  display: none;
+  &.active {
+    display: block;
+  }
   @media (max-width: 999px) {
     right: 50px;
     top: 5px;
