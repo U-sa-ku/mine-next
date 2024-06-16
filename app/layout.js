@@ -19,7 +19,8 @@ export default function RootLayout({ children }) {
     <html lang="ja">
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/icon.png"></link>
+        <link rel="shortcut-icon" href="/icon-192x192.png"></link>
+        <link rel="apple-touch-icon" href="/icon-512x512.png"></link>
         <meta name="theme-color" content="#252525" />
       </head>      
       <body className={notojp.className}>
