@@ -7,7 +7,7 @@ import LazyAnimationImage from "@/app/components/elements/LazyAnimationImage/Laz
 import Pagination from "@/app/components/elements/Pagination/Pagination";
 
 const PhotoList = ({ sectionName, photoListData, totalPages, currentPage }) => {
-  const [isAnimation, setIsAnimation] = useState(false);
+  // リード文
   let lead;
 
   if(sectionName == 'photograph') {
@@ -15,6 +15,9 @@ const PhotoList = ({ sectionName, photoListData, totalPages, currentPage }) => {
   } else if(sectionName == 'snapshot') {
     lead = 'スマートフォンで撮った写真'
   }
+
+  // 読み込みアニメーション
+  const [isAnimation, setIsAnimation] = useState(false);
 
   useEffect(() => {
     setIsAnimation(true);
@@ -31,7 +34,7 @@ const PhotoList = ({ sectionName, photoListData, totalPages, currentPage }) => {
             className={styles.listItem}
           >
             <Link
-              href={`/${sectionName}/preview/${data.id}/`}
+              href={`/${sectionName}/preview/${data.id}/?list=${currentPage}`}
               className={styles.link}
             >
               <figure className={styles.image}>

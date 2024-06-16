@@ -10,10 +10,7 @@ import LazyAnimationImage from "@/app/components/elements/LazyAnimationImage/Laz
 import MoreButton from "@/app/components/elements/MoreButton/MoreButton";
 
 const PhotoSlider = ({ sectionName, photoListData }) => {
-  const navigationPrevRef = useRef(null);
-  const navigationNextRef = useRef(null);
-  const [isBeginning, setIsBeginning] = useState(true);
-  const [isEnd, setIsEnd] = useState(false);
+  // リード文
   let lead;
 
   if(sectionName == 'photograph') {
@@ -21,6 +18,12 @@ const PhotoSlider = ({ sectionName, photoListData }) => {
   } else if(sectionName == 'snapshot') {
     lead = 'スマートフォンで撮った写真'
   }
+
+  // Swiperのコントローラー
+  const navigationPrevRef = useRef(null);
+  const navigationNextRef = useRef(null);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
 
   return (
     <section className={styles.wrapper}>

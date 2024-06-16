@@ -17,7 +17,7 @@ const Contents = ({ sidekickData }) => {
               <LazyAnimationImage
                 fill
                 src={data.image.url}
-                alt={`${sidekickData.name}の写真${index}`}
+                alt={`${sidekickData.name}の写真${index + 1}`}
                 sizes="(max-width: 767px) 100vw, 50vw"
                 className={styles.image}
               />

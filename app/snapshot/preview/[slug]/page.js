@@ -32,7 +32,6 @@ export default async function photographPreview({ params }) {
       currentPhotoData={currentPhotoData}
       previousPhotoData={previousPhotoData}
       nextPhotoData={nextPhotoData}
-      photoListUrl={`/${category}/1/`}
       category={category}
     />
   );

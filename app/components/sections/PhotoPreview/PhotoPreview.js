@@ -1,3 +1,5 @@
+"use client";
+import { useState, useEffect } from 'react';
 import Link from "next/link";
 import { Barlow } from 'next/font/google';
 import styles from "@/app/components/sections/PhotoPreview/PhotoPreview.module.scss";
@@ -11,6 +13,26 @@ const barlow = Barlow({
 });
 
 const PhotoPreview = ({ currentPhotoData, previousPhotoData, nextPhotoData, photoListUrl, category }) => {
+  // 画像alt
+  let imageAlt;
+
+  if(category == 'photograph') {
+    imageAlt = 'ミラーレス一眼で撮った写真';
+  } else if(category == 'snapshot') {
+    imageAlt = 'スマートフォンで撮った写真'
+  }
+
+  // 一覧URLの番号取得
+  const [listNumber, setListNumber] = useState();
+
+  useEffect(() => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const paramValue = urlParams.get('list');
+
+    setListNumber(paramValue);
+  }, [])
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.previewStage}>
@@ -20,7 +42,7 @@ const PhotoPreview = ({ currentPhotoData, previousPhotoData, nextPhotoData, phot
           <LazyAnimationImage
             fill
             src={currentPhotoData.photo.url}
-            alt='ミラーレス一眼で撮った写真'
+            alt={imageAlt}
             sizes="100vw"
           />
         </h1>
@@ -37,7 +59,7 @@ const PhotoPreview = ({ currentPhotoData, previousPhotoData, nextPhotoData, phot
             : null
           }        
           <Link
-            href={photoListUrl}
+            href={`/${category}/${!isNaN(listNumber) && listNumber != '' ? listNumber : 1}/`}
             className={`${styles.navigationLink} ${styles.list}`}
           >
             <span className={styles.navigationListIcon}>
