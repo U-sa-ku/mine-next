@@ -23,14 +23,15 @@ const PhotoPreview = ({ currentPhotoData, previousPhotoData, nextPhotoData, phot
   }
 
   // 一覧URLの番号取得
-  const [listNumber, setListNumber] = useState();
+  const [listNumber, setListNumber] = useState(null);
 
   useEffect(() => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const paramValue = urlParams.get('list');
-
-    setListNumber(paramValue);
+    let paramListValue = urlParams.get('list');
+    
+    paramListValue = !isNaN(paramListValue) && paramListValue != null && paramListValue != '' ? paramListValue : 1
+    setListNumber(paramListValue);
   }, [])
 
   return (
@@ -51,7 +52,7 @@ const PhotoPreview = ({ currentPhotoData, previousPhotoData, nextPhotoData, phot
         <div className={styles.navigationInner}>
           {previousPhotoData != null ?
             <Link
-              href={`/${category}/preview/${previousPhotoData.id}/`}
+              href={`/${category}/preview/${previousPhotoData.id}/?list=${listNumber}`}
               className={`${styles.navigationLink} ${styles.prev}`}
             >
               <span className={`${barlow.className} ${styles.caption}`}>prev</span>
@@ -59,7 +60,7 @@ const PhotoPreview = ({ currentPhotoData, previousPhotoData, nextPhotoData, phot
             : null
           }        
           <Link
-            href={`/${category}/${!isNaN(listNumber) && listNumber != '' ? listNumber : 1}/`}
+            href={`/${category}/${listNumber}/`}
             className={`${styles.navigationLink} ${styles.list}`}
           >
             <span className={styles.navigationListIcon}>
@@ -76,7 +77,7 @@ const PhotoPreview = ({ currentPhotoData, previousPhotoData, nextPhotoData, phot
           </Link>
           {nextPhotoData != null ?
             <Link
-              href={`/${category}/preview/${nextPhotoData.id}/`}
+              href={`/${category}/preview/${nextPhotoData.id}/?list=${listNumber}`}
               className={`${styles.navigationLink} ${styles.next}`}
             >
               <span className={`${barlow.className} ${styles.caption}`}>next</span>
