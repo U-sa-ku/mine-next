@@ -14,10 +14,18 @@ const PhotoSlider = ({ sectionName, photoListData }) => {
   const navigationNextRef = useRef(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
+  let lead;
+
+  if(sectionName == 'photograph') {
+    lead = 'ミラーレス一眼で撮った写真';
+  } else if(sectionName == 'snapshot') {
+    lead = 'スマートフォンで撮った写真'
+  }
 
   return (
-    <section className={styles.sectionWrapper}>
+    <section className={styles.wrapper}>
       <SectionTitle title={sectionName} />
+      <p className={styles.lead}>{lead}</p>
       <Swiper
         modules={[Navigation]}
         slidesPerView={1.3}

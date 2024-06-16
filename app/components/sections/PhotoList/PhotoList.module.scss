@@ -16,6 +16,16 @@
     padding: 90px 0px 0px;
   }
 }
+.lead {
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin: -20px 0px 50px;
+  @media (max-width: 999px) {
+    font-size: 1.1rem;
+    margin: -10px 0px 30px;
+  }
+}
 .list {
   list-style-type: none;
   margin-bottom: 30px;

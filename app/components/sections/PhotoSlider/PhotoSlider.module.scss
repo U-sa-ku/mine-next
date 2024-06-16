@@ -1,9 +1,19 @@
 @use '@/app/styles/variables' as v;
 
-.sectionWrapper {
+.wrapper {
   padding-top: 200px;
   @media (max-width: 999px) {
     padding-top: 100px;
+  }
+}
+.lead {
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin: -20px 0px 50px;
+  @media (max-width: 999px) {
+    font-size: 1.1rem;
+    margin: -10px 0px 30px;
   }
 }
 .slider {

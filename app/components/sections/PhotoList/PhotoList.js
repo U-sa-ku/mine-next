@@ -8,6 +8,13 @@ import Pagination from "@/app/components/elements/Pagination/Pagination";
 
 const PhotoList = ({ sectionName, photoListData, totalPages, currentPage }) => {
   const [isAnimation, setIsAnimation] = useState(false);
+  let lead;
+
+  if(sectionName == 'photograph') {
+    lead = 'ミラーレス一眼で撮った写真';
+  } else if(sectionName == 'snapshot') {
+    lead = 'スマートフォンで撮った写真'
+  }
 
   useEffect(() => {
     setIsAnimation(true);
@@ -16,6 +23,7 @@ const PhotoList = ({ sectionName, photoListData, totalPages, currentPage }) => {
   return (
     <section className={`${styles.wrapper} ${isAnimation ? styles.animation : ''}`}>
       <SectionTitle title={sectionName} />
+      <p className={styles.lead}>{lead}</p>
       <ul className={styles.list}>
         {photoListData.map((data, index) => (
           <li
