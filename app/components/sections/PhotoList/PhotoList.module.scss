@@ -2,13 +2,6 @@
 
 .wrapper {
   padding: 150px 0px 0px;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: 1s 0.5s;
-  &.animation {
-    transform: translateY(0px);
-    opacity: 1;
-  }  
   @media (max-width: 999px) {
     padding-top: 90px;
   }
@@ -33,6 +26,13 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 1s 0.5s;
+  &.animation {
+    transform: translateY(0px);
+    opacity: 1;
+  }  
   @media (max-width: 767px) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }

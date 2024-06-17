@@ -24,10 +24,10 @@ const PhotoList = ({ sectionName, photoListData, totalPages, currentPage }) => {
   }, [])
 
   return (
-    <section className={`${styles.wrapper} ${isAnimation ? styles.animation : ''}`}>
+    <section className={styles.wrapper}>
       <SectionTitle title={sectionName} />
       <p className={styles.lead}>{lead}</p>
-      <ul className={styles.list}>
+      <ul className={`${styles.list} ${isAnimation ? styles.animation : ''}`}>
         {photoListData.map((data, index) => (
           <li
             key={index}
