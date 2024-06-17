@@ -2,9 +2,9 @@
 
 .wrapper {
   background-color: v.$color_middleGray;
-  margin-top: 70vw;
+  margin-top: 65vw;
   margin-bottom: -300px;
-  padding-top: 5vw;
+  padding-top: 10vw;
   padding-bottom: 300px;
   position: relative;
   opacity: 0;
@@ -13,11 +13,15 @@
   &.animation {
     opacity: 1;
     transform: translateY(0px);
-  }  
+  }
+  &.mainvisualUnfixed {
+    margin-top: 2vw;
+    padding-top: 7vw;
+  }
   @media (max-width: 767px) {
-    margin-top: 150vw;
+    margin-top: 145vw;
     margin-bottom: -200px;
-    padding-top: 10vw;
+    padding-top: 15vw;
     padding-bottom: 200px;
   }
   @media (min-width: 1441px) {
@@ -26,20 +30,25 @@
 }
 .scrollIcon {
   width: 1px;
-  height: 7vw;
+  height: 10vw;
   position: absolute;
   left: 50%;
-  top: -7vw;
+  top: -2vw;
   z-index: 1;
   transform: translateX(-50%);
   overflow: hidden;
   opacity: 0;
   transition: 1s 2.5s;
+  &.mainvisualUnfixed {
+    height: 7vw;
+    top: -2vw;
+  }
   @media (max-width: 767px) {
     height: 15vw;
-    top: -10vw;
+    top: -5vw;
   }
   @media (min-width: 1441px) {
+    height: 11.5vw;
     top: -5vh;
   }
   &:before {

@@ -9,6 +9,9 @@
   left: 0px;
   top: 0px;
   z-index: 0;
+  &.unfixed {
+    position: relative;
+  }
   @media (max-width: 999px) {
     padding: 5px;
   }

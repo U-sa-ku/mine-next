@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '@/feature/sidekick/Contents/Contents.module.scss';
 import Mainvisual from '@/feature/sidekick/Mainvisual/Mainvisual';
 import Description from '@/feature/sidekick/Description/Description';
@@ -10,23 +10,47 @@ const Contents = ({ sidekickData, photographListData, snapshotListData }) => {
   const [isAnimation, setIsAnimation] = useState(false);
   const [isMovieRendering, setIsMovieRendering] = useState(false);
 
+  // オープニングアニメーション
   const contentsAnimation = () => {
     setIsAnimation(true);
     
     setTimeout(() =>{
       setIsMovieRendering(true);
     }, 1000);    
-  } 
+  }
+
+  // ブラウザがメインビジュアルの高さ以下でパララックス無効化
+  const [isMainvisualUnfixed, setMainvisualUnfixed] = useState(false);
+  
+  const switchMainvisualFixed = () => {
+    const windowHeight = window.innerHeight;
+
+    if(windowHeight <= 950) {
+      setMainvisualUnfixed(true);
+    } else {
+      setMainvisualUnfixed(false);
+    }
+  }
+
+  useEffect(() => {
+    switchMainvisualFixed();
+    window.addEventListener('resize', switchMainvisualFixed);
+
+    return () => {
+      window.removeEventListener('resize', switchMainvisualFixed);
+    };
+  }, []);    
 
   return (
     <>
       <Mainvisual
         sidekickData={sidekickData}
         contentsAnimation={contentsAnimation}
+        isUnfixed={isMainvisualUnfixed}
       />     
-      <main className={`${styles.wrapper} ${isAnimation ? styles.animation : ''}`}>
-        <i className={`${styles.scrollIcon} ${isAnimation ? styles.animation : ''}`}></i>
-        <Description sidekickData={sidekickData} />   
+      <main className={`${styles.wrapper} ${isAnimation ? styles.animation : ''} ${isMainvisualUnfixed ? styles.mainvisualUnfixed : ''}`}>
+        <i className={`${styles.scrollIcon} ${isAnimation ? styles.animation : ''} ${isMainvisualUnfixed ? styles.mainvisualUnfixed : ''}`}></i>
+        <Description sidekickData={sidekickData} />
         {sidekickData.movie.length >= 1 && isMovieRendering ? <Movie sidekickData={sidekickData} /> : null}
         {photographListData.contents.length >= 1 ?
           <PhotoSlider

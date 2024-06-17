@@ -6,16 +6,17 @@ import styles from '@/feature/sidekick/Mainvisual/Mainvisual.module.scss';
 
 // Googleフォント
 const barlow = Barlow({
-  weight: ['100', '300'],
+  weight: ['300'],
   subsets: ['latin'],
   display: 'swap',
 });
 
-const sidekickMainvisual = ({ sidekickData, contentsAnimation }) => {
+const sidekickMainvisual = ({ sidekickData, contentsAnimation, isUnfixed }) => {
   const [isMounted, setIsMounted] = useState(false);
   const [isAnimation, setIsAnimation] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  // オープニングアニメーション
   const animation = () => {
     setIsAnimation(true);
     if(contentsAnimation) {
@@ -33,10 +34,10 @@ const sidekickMainvisual = ({ sidekickData, contentsAnimation }) => {
     }
 
     setIsMounted(true);
-  }, []);  
+  }, []);
 
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${isUnfixed ? styles.unfixed : ''}`}>
       <div className={`${styles.initImageWrapper} ${isAnimation ? styles.animation : ''}`}>
         {
           isMobile ?

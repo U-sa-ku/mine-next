@@ -7,6 +7,7 @@
 .title h2 {
   color: v.$color_lightGray;
   font-size: 2.6rem;
+  font-weight: 300;
   line-height: 1.6;
   letter-spacing: 0.1em;
   text-align: center;
@@ -14,7 +15,7 @@
   position: relative;
   @media (max-width: 999px) {
     font-size: 1.6rem;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
   &:before {
     content: "";
