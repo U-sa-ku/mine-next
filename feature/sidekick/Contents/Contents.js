@@ -24,8 +24,10 @@ const Contents = ({ sidekickData, photographListData, snapshotListData }) => {
   
   const switchMainvisualFixed = () => {
     const windowHeight = window.innerHeight;
+    const userAgent = navigator.userAgent;
+    const isNotMobile = userAgent.indexOf('iPhone') == -1 || (userAgent.indexOf('Android') == -1 && userAgent.indexOf('Mobile') == -1) ? true : false;
 
-    if(windowHeight <= 950) {
+    if(windowHeight <= 950 && isNotMobile) {
       setMainvisualUnfixed(true);
     } else {
       setMainvisualUnfixed(false);
@@ -34,11 +36,6 @@ const Contents = ({ sidekickData, photographListData, snapshotListData }) => {
 
   useEffect(() => {
     switchMainvisualFixed();
-    window.addEventListener('resize', switchMainvisualFixed);
-
-    return () => {
-      window.removeEventListener('resize', switchMainvisualFixed);
-    };
   }, []);    
 
   return (
