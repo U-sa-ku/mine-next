@@ -16,7 +16,7 @@ const Contents = ({ sidekickData, photographListData, snapshotListData }) => {
     
     setTimeout(() =>{
       setIsMovieRendering(true);
-    }, 1000);    
+    }, 2000);    
   }
 
   // PCブラウザの特定の高さ以下でパララックス無効化
