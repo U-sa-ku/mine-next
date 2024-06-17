@@ -16,11 +16,12 @@ const SiteNavigation = () => {
 
   return (
     <>
-      <i
-        className={`${styles.hamburger} ${isActive ? styles.active : ''}`}
+      <div
+        className={styles.hamburger}
         onClick={switchActive}
       >
-      </i>
+        <i className={`${styles.hamburgerIcon} ${isActive ? styles.active : ''}`}></i>
+      </div>
       <SiteNavigationItems
         isActive={isActive}
         hamburgerInactive={inactive}

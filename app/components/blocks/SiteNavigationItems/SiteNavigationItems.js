@@ -57,7 +57,7 @@ const SiteNavigationItems = ({ isActive, isTop, isFixed, imageAnimation, hamburg
   }
 
   return (
-    <nav className={`${styles.blockWrapper} ${isActive ? styles.active : ''} ${isTop ? styles.top : ''} ${isFixed ? styles.fixed : ''}`}>
+    <nav className={`${styles.wrapper} ${isActive ? styles.active : ''} ${isTop ? styles.top : ''} ${isFixed ? styles.fixed : ''}`}>
       {items.map((itemData, index) => (
         <Link
           key={index}
