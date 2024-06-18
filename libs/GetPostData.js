@@ -11,7 +11,7 @@ export const getPhotoListData = async (limit, category, sidekick) => {
         headers: {
           'X-API-KEY': process.env.API_KEY,
         },
-        next: { revalidate: 3600 },
+        // next: { revalidate: 3600 },
       }
     );
   } else {
@@ -21,7 +21,7 @@ export const getPhotoListData = async (limit, category, sidekick) => {
         headers: {
           'X-API-KEY': process.env.API_KEY,
         },
-        next: { revalidate: 3600 },
+        // next: { revalidate: 3600 },
       }
     );
   }
@@ -40,7 +40,7 @@ export const getPagingPhotoListData = async (limit, category, page) => {
       headers: {
         'X-API-KEY': process.env.API_KEY,
       },
-      next: { revalidate: 3600 },
+      // next: { revalidate: 3600 },
     }
   );
 
@@ -60,7 +60,7 @@ export const getPhotoData = async (slug, category) => {
       headers: {
         'X-API-KEY': process.env.API_KEY,
       },
-      next: { revalidate: 3600 },
+      // next: { revalidate: 3600 },
     }
   );
 
@@ -73,7 +73,7 @@ export const getPhotoData = async (slug, category) => {
       headers: {
         'X-API-KEY': process.env.API_KEY,
       },
-      next: { revalidate: 3600 },
+      // next: { revalidate: 3600 },
     }
   );
 
@@ -95,7 +95,7 @@ export const getSidekickData = async (slug) => {
       headers: {
         'X-API-KEY': process.env.API_KEY,
       },
-      next: { revalidate: 3600 },
+      // next: { revalidate: 3600 },
     }
   );
 
