@@ -6,8 +6,7 @@ export const getPhotoListData = async (limit, category, sidekick) => {
 
   if(sidekick) {
     photoListDataResponse = await fetch(
-      `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}&filters=category[contains]${category}[and]sidekick[contains]${sidekick}`,
-      {
+      `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}&filters=category[contains]${category}[and]sidekick[contains]${sidekick}`, {
         headers: {
           'X-API-KEY': process.env.API_KEY,
         },
@@ -16,8 +15,7 @@ export const getPhotoListData = async (limit, category, sidekick) => {
     );
   } else {
     photoListDataResponse = await fetch(
-      `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}&filters=category[contains]${category}`,
-      {
+      `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}&filters=category[contains]${category}`, {
         headers: {
           'X-API-KEY': process.env.API_KEY,
         },
@@ -35,8 +33,7 @@ export const getPhotoListData = async (limit, category, sidekick) => {
 //////////////////////////////////////////////////////////////////////
 export const getPagingPhotoListData = async (limit, category, page) => {
   const photoListDataResponse = await fetch(
-    `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}&filters=category[contains]${category}&offset=${(page - 1) * limit}`, 
-    {
+    `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}&filters=category[contains]${category}&offset=${(page - 1) * limit}`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,
       },
@@ -55,8 +52,7 @@ export const getPagingPhotoListData = async (limit, category, page) => {
 export const getPhotoData = async (slug, category) => {
   // 現在の投稿データ取得
   const currentPhotoDataResponse = await fetch(
-    `${process.env.SERVICE_DOMAIN}/photo/${slug}`, 
-    {
+    `${process.env.SERVICE_DOMAIN}/photo/${slug}`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,
       },
@@ -68,8 +64,7 @@ export const getPhotoData = async (slug, category) => {
 
   // 前後の投稿データ取得
   const photoListDataResponse = await fetch(
-    `${process.env.SERVICE_DOMAIN}/photo/?limit=1000&filters=category[contains]${category}&fields=id&orders=publishedAt`, 
-    {
+    `${process.env.SERVICE_DOMAIN}/photo/?limit=1000&filters=category[contains]${category}&fields=id&orders=publishedAt`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,
       },
@@ -90,8 +85,7 @@ export const getPhotoData = async (slug, category) => {
 //////////////////////////////////////////////////////////////////////
 export const getSidekickData = async (slug) => {
   const sidekickDataResponse = await fetch(
-    `${process.env.SERVICE_DOMAIN}/sidekick/${slug}`, 
-    {
+    `${process.env.SERVICE_DOMAIN}/sidekick/${slug}`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,
       },
