@@ -8,7 +8,7 @@ import SiteNavigationItems from '@/app/components/blocks/SiteNavigationItems/Sit
 const topMainvisual = () => {
   // オープニングアニメーション
   const [isAnimation, setIsAnimation] = useState(false);
-  const animation = () => setIsAnimation(true);
+  const animation = () => setTimeout(() => setIsAnimation(true), 500);
 
   // ナビゲーション追従切替
   const [isWrapperMargin, setIsWrapperMargin] = useState(false);

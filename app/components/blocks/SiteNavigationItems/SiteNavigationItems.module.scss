@@ -1,5 +1,7 @@
 @use '@/app/styles/variables' as v;
 
+$transitionDelay: 0.5s;
+
 .wrapper {
   width: 100%;
   height: 100vh;
@@ -34,7 +36,7 @@
     }
     .item {
       .image {
-        transition: 1s ease-out;
+        transition: 1s $transitionDelay ease-out;
         &.animation {
           transform: translate(0%, 0%) !important;
         }
