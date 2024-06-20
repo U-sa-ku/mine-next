@@ -28,6 +28,7 @@ export const getPhotoListData = async (limit, category, sidekick) => {
 
   return photoListData;
 }
+
 //
 // photo API取得 (一覧 => カテゴリ + ページング)
 //////////////////////////////////////////////////////////////////////
