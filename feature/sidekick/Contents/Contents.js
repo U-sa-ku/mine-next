@@ -28,6 +28,7 @@ const Contents = ({ sidekickData, photographListData, snapshotListData }) => {
   }
 
   useEffect(() => {
+    window.scroll({top: 0}); // ブラウザ幅1441px以上でのページ読み込み後のスクロールバグ対策
     switchMainvisualFixed();
     window.addEventListener('resize', switchMainvisualFixed);
     return () => window.removeEventListener('resize', switchMainvisualFixed);
