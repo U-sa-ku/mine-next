@@ -8,10 +8,7 @@ import SiteNavigationItems from '@/app/components/blocks/SiteNavigationItems/Sit
 const topMainvisual = () => {
   // オープニングアニメーション
   const [isAnimation, setIsAnimation] = useState(false);
-
-  const animation = () => {
-    setIsAnimation(true);
-  }
+  const animation = () => setIsAnimation(true);
 
   // ナビゲーション追従切替
   const [isWrapperMargin, setIsWrapperMargin] = useState(false);
@@ -33,10 +30,7 @@ const topMainvisual = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', switchFixedNavigation);
-
-    return () => {
-      window.removeEventListener('scroll', switchFixedNavigation);
-    };
+    return () => window.removeEventListener('scroll', switchFixedNavigation);
   }, []);  
 
   return (
@@ -58,7 +52,7 @@ const topMainvisual = () => {
         isActive={true}
         isTop={true}
         isFixed={isNavigationFixed}        
-        imageAnimation={animation}
+        mainvisualAnimation={animation}
       />      
     </>
   );

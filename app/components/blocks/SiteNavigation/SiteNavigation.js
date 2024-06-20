@@ -5,14 +5,8 @@ import SiteNavigationItems from '@/app/components/blocks/SiteNavigationItems/Sit
 
 const SiteNavigation = () => {
   const [isActive, setIsActive] = useState(false);
-
-  const switchActive = () => {
-    setIsActive(!isActive);
-  };
-
-  const inactive = () => {
-    setIsActive(false);
-  };  
+  const switchActive = () => setIsActive(!isActive);
+  const inactive = () => setIsActive(false);
 
   return (
     <>

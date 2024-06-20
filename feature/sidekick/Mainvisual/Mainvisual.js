@@ -19,20 +19,14 @@ const sidekickMainvisual = ({ sidekickData, contentsAnimation, isUnfixed }) => {
   // オープニングアニメーション
   const animation = () => {
     setIsAnimation(true);
-    if(contentsAnimation) {
-      contentsAnimation();
-    }
+    contentsAnimation ? contentsAnimation() : '';
   }
 
+  // デバイスによって画像切り替え
   useEffect(() => {
     const windowWidth = window.innerWidth;
     
-    if(windowWidth >= 768) {
-      setIsMobile(false);
-    } else {
-      setIsMobile(true);
-    }
-
+    windowWidth >= 768 ? setIsMobile(false) : setIsMobile(true);
     setIsMounted(true);
   }, []);
 

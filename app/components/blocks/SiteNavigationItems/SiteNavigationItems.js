@@ -15,7 +15,7 @@ const barlow = Barlow({
   display: 'swap',
 });
 
-const SiteNavigationItems = ({ isActive, isTop, isFixed, imageAnimation, hamburgerInactive }) => { 
+const SiteNavigationItems = ({ isActive, isTop, isFixed, mainvisualAnimation, hamburgerInactive }) => { 
   const items = [
     { href: '/sidekick/2wheels/', caption: '2wheels', imageSrc: Image2wheels, imageAlt: 'YAMAHA SR400の画像' },
     { href: '/sidekick/mirrorless/', caption: 'Mirrorless', imageSrc: ImageMirrorless, imageAlt: 'OLYMPUS OM-D E-M10の画像' },
@@ -27,33 +27,26 @@ const SiteNavigationItems = ({ isActive, isTop, isFixed, imageAnimation, hamburg
   const [isImageAnimation, setIsImageAnimation] = useState(false);
 
   const updateLoadedImages = (index) => {
-    setIsLoadedImages((prev) => {
-      const isLoadedImagesTemp = [...prev];
+    if(isTop) {
+      setIsLoadedImages((prev) => {
+        const isLoadedImagesTemp = [...prev];
+        isLoadedImagesTemp[index] = true;
+        return isLoadedImagesTemp;
+      });
 
-      isLoadedImagesTemp[index] = true;
-      return isLoadedImagesTemp;
-    });
-
-    setTimeout(() => {
-      if(imageAnimation) {
-        imageAnimation();
-      }
-    }, 500);    
+      mainvisualAnimation ? mainvisualAnimation() : '';
+    }
   }
 
   useEffect(() => {
-    if (isLoadedImages.every(Boolean)) {
-      setTimeout(() => {
-        setIsImageAnimation(true);
-      }, 500);     
-    }
-  }, [isLoadedImages]);
+    if(isTop) {
+      isLoadedImages.every(Boolean) ? setIsImageAnimation(true): '';
+    }    
+  }, [isTop, isLoadedImages]);
 
-  // ページ遷移時のナビゲーションクローズ
+  // ナビゲーションクローズ
   const closeNavigation = () => {
-    if(hamburgerInactive) {
-      hamburgerInactive();
-    }
+    !isTop && hamburgerInactive ? hamburgerInactive() : '';
   }
 
   return (

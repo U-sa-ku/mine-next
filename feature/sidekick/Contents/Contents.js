@@ -13,10 +13,7 @@ const Contents = ({ sidekickData, photographListData, snapshotListData }) => {
   // オープニングアニメーション
   const contentsAnimation = () => {
     setIsAnimation(true);
-    
-    setTimeout(() =>{
-      setIsMovieRendering(true);
-    }, 2000);    
+    setTimeout(() => setIsMovieRendering(true), 2000);    
   }
 
   // PCブラウザの特定の高さ以下でパララックス無効化
@@ -27,21 +24,14 @@ const Contents = ({ sidekickData, photographListData, snapshotListData }) => {
     const userAgent = navigator.userAgent;
     const isPC = userAgent.indexOf('iPhone') == -1 || (userAgent.indexOf('Android') == -1 && userAgent.indexOf('Mobile') == -1) ? true : false;
 
-    if(windowHeight <= 950 && isPC) {
-      setMainvisualUnfixed(true);
-    } else {
-      setMainvisualUnfixed(false);
-    }
+    windowHeight <= 950 && isPC ? setMainvisualUnfixed(true) : setMainvisualUnfixed(false);
   }
 
   useEffect(() => {
     switchMainvisualFixed();
     window.addEventListener('resize', switchMainvisualFixed);
-
-    return () => {
-      window.removeEventListener('resize', switchMainvisualFixed);
-    };
-  }, []);    
+    return () => window.removeEventListener('resize', switchMainvisualFixed);
+  }, []);
 
   return (
     <>

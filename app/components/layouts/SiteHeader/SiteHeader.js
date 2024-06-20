@@ -12,20 +12,13 @@ const SiteHeader = ({ isScrollAnimation }) => {
     const triggerPosition =  window.innerHeight * 0.5;
     const scrollTop = window.scrollY;
 
-    if(scrollTop >= triggerPosition) {
-      setIsAnimation(true);
-    } else {
-      setIsAnimation(false);
-    }    
+    scrollTop >= triggerPosition ? setIsAnimation(true) : setIsAnimation(false);    
   }
 
   useEffect(() => {
     if(isScrollAnimation) {
       window.addEventListener('scroll', switchVisible);
-
-      return () => {
-        window.removeEventListener('scroll', switchVisible);
-      };
+      return () => window.removeEventListener('scroll', switchVisible);
     } else {
       setIsAnimation(true);
     }

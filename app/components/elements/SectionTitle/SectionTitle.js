@@ -1,6 +1,7 @@
 import { Barlow } from "next/font/google";
 import styles from "@/app/components/elements/SectionTitle/SectionTitle.module.scss";
 
+// Googleフォント
 const barlow = Barlow({
   weight: ["300"],
   subsets: ["latin"],

@@ -10,36 +10,29 @@ import LogoMineE from '@/public/logo_mine_e.svg';
 
 export default function Loading() {
   const pathname = usePathname()
-  const [isMounted, setIsMounted] = useState(false);
-    
+  const [isHidden, setIsHidden] = useState(false);
+  const hidden = () => setIsHidden(true);
+  const visible = () => setIsHidden(false);
+
   useEffect(() => {
     const links = document.querySelectorAll('a');
 
-    // ページ読み込み時
-    setIsMounted(true);
+    hidden(); // ページ読み込み時
 
     // ページ遷移開始時
     links.forEach((link) => {
       const href = new URL(link.href);
       
-      if(href.pathname != pathname) {
-        link.addEventListener("click", () => {
-          setIsMounted(false);
-        });
-      }
+      href.pathname != pathname ? link.addEventListener("click", visible) : '';
     });
 
     return () => {
-      links.forEach((link) => {
-        link.removeEventListener("click", () => {
-          setIsMounted(true);
-        });
-      });  
+      links.forEach((link) => link.removeEventListener("click", visible));
     }
   }, [pathname])
 
   return (
-    <div className={`${styles.wrapper} ${isMounted ? styles.hidden : ''}`}>
+    <div className={`${styles.wrapper} ${isHidden ? styles.hidden : ''}`}>
       <div className={styles.logo}>
         <Image
           src={LogoMineM}

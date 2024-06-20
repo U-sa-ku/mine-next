@@ -8,9 +8,7 @@ export default function Loading() {
   const [isPwa, setIsPwa] = useState(false);
 
   // リロード
-  const windowReload = () => {
-    location.reload();
-  }
+  const windowReload = () => location.reload();
 
   // PWA判定
   const checkPwaMode = () => {

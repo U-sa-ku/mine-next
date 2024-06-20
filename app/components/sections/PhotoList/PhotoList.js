@@ -14,14 +14,14 @@ const PhotoList = ({ sectionName, photoListData, totalPages, currentPage }) => {
     lead = 'ミラーレス一眼で撮った写真';
   } else if(sectionName == 'snapshot') {
     lead = 'スマートフォンで撮った写真'
+  } else {
+    lead = '';
   }
 
   // 読み込みアニメーション
   const [isAnimation, setIsAnimation] = useState(false);
-
-  useEffect(() => {
-    setIsAnimation(true);
-  }, [])
+  
+  useEffect(() => setIsAnimation(true), []);
 
   return (
     <section className={styles.wrapper}>

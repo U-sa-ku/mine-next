@@ -1,5 +1,3 @@
-"use client";
-import { useState } from 'react';
 import styles from '@/feature/sidekick/Description/Description.module.scss';
 import LazyAnimationImage from "@/app/components/elements/LazyAnimationImage/LazyAnimationImage";
 

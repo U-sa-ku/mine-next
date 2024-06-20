@@ -12,7 +12,7 @@ const barlow = Barlow({
   display: 'swap',
 });
 
-const PhotoPreview = ({ currentPhotoData, previousPhotoData, nextPhotoData, photoListUrl, category }) => {
+const PhotoPreview = ({ currentPhotoData, previousPhotoData, nextPhotoData, category }) => {
   // 画像alt
   let imageAlt;
 
@@ -30,9 +30,9 @@ const PhotoPreview = ({ currentPhotoData, previousPhotoData, nextPhotoData, phot
     const urlParams = new URLSearchParams(queryString);
     let paramListValue = urlParams.get('list');
     
-    paramListValue = !isNaN(paramListValue) && paramListValue != null && paramListValue != '' ? paramListValue : 1
+    paramListValue = !isNaN(paramListValue) && paramListValue != null && paramListValue != '' ? paramListValue : 1;
     setListNumber(paramListValue);
-  }, [])
+  }, []);
 
   return (
     <div className={styles.wrapper}>

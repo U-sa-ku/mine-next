@@ -6,6 +6,7 @@ import ImageLoading from "@/app/components/elements/ImageLoading/ImageLoading";
 
 const LazyAnimationImage = (props) => {
   const [isLoaded, setLoaded] = useState(false);
+  
   return (
     <>
       {/* eslint-disable-next-line jsx-a11y/alt-text */}

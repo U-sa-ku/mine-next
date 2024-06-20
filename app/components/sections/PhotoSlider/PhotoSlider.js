@@ -17,6 +17,8 @@ const PhotoSlider = ({ sectionName, photoListData }) => {
     lead = 'ミラーレス一眼で撮った写真';
   } else if(sectionName == 'snapshot') {
     lead = 'スマートフォンで撮った写真'
+  } else {
+    lead = '';
   }
 
   // Swiperのコントローラー
