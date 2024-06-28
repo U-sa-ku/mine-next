@@ -2,7 +2,7 @@ import { getPhotoListData, getPagingPhotoListData } from "@/libs/GetPostData"
 import PhotoList from "@/app/components/sections/PhotoList/PhotoList";
 import PhotoSlider from "@/app/components/sections/PhotoSlider/PhotoSlider";
 
-// meta
+// メタデータ生成
 export const metadata = {
   title: "snapshot | mine",
   description: "スマートフォンで撮った写真一覧",

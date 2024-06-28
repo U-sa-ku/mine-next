@@ -2,7 +2,7 @@ import { getPhotoListData } from "@/libs/GetPostData"
 import Mainvisual from "@/feature/top/Mainvisual/Mainvisual";
 import PhotoSlider from "@/app/components/sections/PhotoSlider/PhotoSlider";
 
-// meta
+// メタデータ生成
 export const metadata = {
   title: "mine",
   description: "車とバイクとカメラ",

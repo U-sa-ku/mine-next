@@ -1,7 +1,7 @@
 import { getSidekickData, getPhotoListData } from "@/libs/GetPostData"
 import Contents from '@/feature/sidekick/Contents/Contents';
 
-// meta
+// メタデータ生成
 export async function generateMetadata({ params }) {
   const sidekickData = await getSidekickData(params.slug);
 
