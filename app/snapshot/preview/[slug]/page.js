@@ -42,10 +42,10 @@ export default async function photographPreview({ params, searchParams }) {
 
   return (
     <PhotoPreview
+    category={category}
       currentPhotoData={currentPhotoData}
       previousPhotoData={previousPhotoData}
       nextPhotoData={nextPhotoData}
-      category={category}
       listNumber={listNumber}
     />
   );
