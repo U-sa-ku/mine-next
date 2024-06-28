@@ -1,17 +1,24 @@
 //
-// photo API取得 (一覧 => カテゴリ)
+// photo API取得 (一覧)
 //////////////////////////////////////////////////////////////////////
 export const getPhotoListData = async (limit, category, sidekick) => {
+  let apiCategoryFilter;
   let apiSidekickFilter;
 
-  if(sidekick) {
+  if(category) {
+    apiCategoryFilter = `&filters=category[contains]${category}`;
+  } else {
+    apiCategoryFilter = '';
+  }
+
+  if(category && sidekick) {
     apiSidekickFilter = `[and]sidekick[contains]${sidekick}`;
   } else {
     apiSidekickFilter = '';
   }
 
   const photoListDataResponse = await fetch(
-    `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}&filters=category[contains]${category}${apiSidekickFilter}`, {
+    `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}${apiCategoryFilter}${apiSidekickFilter}`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,
       },
@@ -25,7 +32,7 @@ export const getPhotoListData = async (limit, category, sidekick) => {
 }
 
 //
-// photo API取得 (一覧 => カテゴリ + ページング)
+// photo API取得 (一覧 + ページング)
 //////////////////////////////////////////////////////////////////////
 export const getPagingPhotoListData = async (limit, category, page) => {
   const photoListDataResponse = await fetch(
@@ -43,7 +50,7 @@ export const getPagingPhotoListData = async (limit, category, page) => {
 }
 
 //
-// photo API取得 (詳細 => カテゴリ)
+// photo API取得 (詳細)
 //////////////////////////////////////////////////////////////////////
 export const getPhotoData = async (slug, category) => {
   // 現在の投稿データ取得
