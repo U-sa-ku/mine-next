@@ -5,7 +5,7 @@ const category = 'snapshot';
 
 // 静的パス生成
 export async function generateStaticParams() {
-  const photoListData = await getPhotoListData(100);
+  const photoListData = await getPhotoListData(100, category);
   const contents = photoListData.contents;
 
   return contents.map((content) => ({
