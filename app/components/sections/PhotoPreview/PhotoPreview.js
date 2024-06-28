@@ -1,5 +1,3 @@
-"use client";
-import { useState, useEffect } from 'react';
 import Link from "next/link";
 import { Barlow } from 'next/font/google';
 import styles from "@/app/components/sections/PhotoPreview/PhotoPreview.module.scss";
@@ -12,7 +10,7 @@ const barlow = Barlow({
   display: 'swap',
 });
 
-const PhotoPreview = ({ currentPhotoData, previousPhotoData, nextPhotoData, category }) => {
+const PhotoPreview = ({ currentPhotoData, previousPhotoData, nextPhotoData, category, listNumber }) => {
   // 画像alt
   let imageAlt;
 
@@ -21,18 +19,6 @@ const PhotoPreview = ({ currentPhotoData, previousPhotoData, nextPhotoData, cate
   } else if(category == 'snapshot') {
     imageAlt = 'スマートフォンで撮った写真'
   }
-
-  // 一覧URLの番号取得
-  const [listNumber, setListNumber] = useState(null);
-
-  useEffect(() => {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    let paramListValue = urlParams.get('list');
-    
-    paramListValue = !isNaN(paramListValue) && paramListValue != null && paramListValue != '' ? paramListValue : 1;
-    setListNumber(paramListValue);
-  }, []);
 
   return (
     <div className={styles.wrapper}>

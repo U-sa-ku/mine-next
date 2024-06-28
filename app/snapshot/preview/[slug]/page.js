@@ -1,9 +1,21 @@
-import { getPhotoData } from "@/libs/GetPostData"
+import { getPhotoListData, getPhotoData } from "@/libs/GetPostData";
 import PhotoPreview from "@/app/components/sections/PhotoPreview/PhotoPreview";
 
-// meta
+const category = 'snapshot';
+
+// 静的パス生成
+export async function generateStaticParams() {
+  const photoListData = await getPhotoListData(100);
+  const contents = photoListData.contents;
+
+  return contents.map((content) => ({
+    slug: content.id,
+  }))  
+}
+
+// メタデータ生成
 export async function generateMetadata({ params }) {
-  const { currentPhotoData }  = await getPhotoData(params.slug, 'snapshot');
+  const { currentPhotoData }  = await getPhotoData(params.slug, category);
 
   return {
     title: "preview | snapshot | mine",
@@ -23,9 +35,10 @@ export async function generateMetadata({ params }) {
   }
 }
 
-export default async function photographPreview({ params }) {
-  const category = 'snapshot';
+// コンポーネント
+export default async function photographPreview({ params, searchParams }) {
   const { currentPhotoData, previousPhotoData, nextPhotoData }  = await getPhotoData(params.slug, category);
+  const listNumber = searchParams.list ? searchParams.list : 1;
 
   return (
     <PhotoPreview
@@ -33,6 +46,7 @@ export default async function photographPreview({ params }) {
       previousPhotoData={previousPhotoData}
       nextPhotoData={nextPhotoData}
       category={category}
+      listNumber={listNumber}
     />
   );
 }
