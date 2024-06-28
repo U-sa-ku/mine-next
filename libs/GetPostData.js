@@ -2,27 +2,22 @@
 // photo API取得 (一覧 => カテゴリ)
 //////////////////////////////////////////////////////////////////////
 export const getPhotoListData = async (limit, category, sidekick) => {
-  let photoListDataResponse;
+  let apiSidekickFilter;
 
   if(sidekick) {
-    photoListDataResponse = await fetch(
-      `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}&filters=category[contains]${category}[and]sidekick[contains]${sidekick}`, {
-        headers: {
-          'X-API-KEY': process.env.API_KEY,
-        },
-        // next: { revalidate: 86400 },
-      }
-    );
+    apiSidekickFilter = `[and]sidekick[contains]${sidekick}`;
   } else {
-    photoListDataResponse = await fetch(
-      `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}&filters=category[contains]${category}`, {
-        headers: {
-          'X-API-KEY': process.env.API_KEY,
-        },
-        // next: { revalidate: 86400 },
-      }
-    );
+    apiSidekickFilter = '';
   }
+
+  const photoListDataResponse = await fetch(
+    `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}&filters=category[contains]${category}${apiSidekickFilter}`, {
+      headers: {
+        'X-API-KEY': process.env.API_KEY,
+      },
+      // next: { revalidate: 86400 },
+    }
+  );  
 
   const photoListData = await photoListDataResponse.json();
 
