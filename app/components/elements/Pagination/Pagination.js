@@ -9,7 +9,8 @@ const barlow = Barlow({
   display: "swap",
 });
 
-const Pagination = ({ sectionName, totalPages, currentPage }) => {
+// コンポーネント
+export default function Pagination({ sectionName, totalPages, currentPage }) {
   return (
     <ul className={styles.wrapper}>
       {Array.from({ length: totalPages }, (_, index) => (
@@ -27,6 +28,4 @@ const Pagination = ({ sectionName, totalPages, currentPage }) => {
       ))}
     </ul>
   );
-};
-
-export default Pagination;
+}

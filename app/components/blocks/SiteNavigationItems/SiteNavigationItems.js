@@ -15,7 +15,8 @@ const barlow = Barlow({
   display: 'swap',
 });
 
-const SiteNavigationItems = ({ isActive, isTop, isFixed, mainvisualAnimation, hamburgerInactive }) => { 
+// コンポーネント
+export default function SiteNavigationItems({ isActive, isTop, isFixed, mainvisualAnimation, hamburgerInactive }) { 
   const items = [
     { href: '/sidekick/2wheels/', caption: '2wheels', imageSrc: Image2wheels, imageAlt: 'YAMAHA SR400の画像' },
     { href: '/sidekick/mirrorless/', caption: 'Mirrorless', imageSrc: ImageMirrorless, imageAlt: 'OLYMPUS OM-D E-M10の画像' },
@@ -73,5 +74,3 @@ const SiteNavigationItems = ({ isActive, isTop, isFixed, mainvisualAnimation, ha
     </nav>
   );
 }
-
-export default SiteNavigationItems;

@@ -8,10 +8,9 @@ const barlow = Barlow({
   display: "swap",
 });
 
-const SectionTitle = ({ title }) => {
+// コンポーネント
+export default function SectionTitle({ title }) {
   return (
     <h2 className={`${barlow.className} ${styles.wrapper}`}>{ title }</h2>
   );
-};
-
-export default SectionTitle;
+}

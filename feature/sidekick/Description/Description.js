@@ -1,7 +1,8 @@
 import styles from '@/feature/sidekick/Description/Description.module.scss';
 import LazyAnimationImage from "@/app/components/elements/LazyAnimationImage/LazyAnimationImage";
 
-const Contents = ({ sidekickData }) => {
+// コンポーネント
+export default function Contents({ sidekickData }) {
   return (
     <section className={styles.wrapper}>
       <div className={styles.title} dangerouslySetInnerHTML={{ __html: sidekickData.description_title }} />
@@ -29,5 +30,3 @@ const Contents = ({ sidekickData }) => {
     </section>
   );
 }
-
-export default Contents;

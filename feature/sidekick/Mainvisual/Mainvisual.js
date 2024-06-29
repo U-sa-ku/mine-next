@@ -11,7 +11,8 @@ const barlow = Barlow({
   display: 'swap',
 });
 
-const sidekickMainvisual = ({ sidekickData, contentsAnimation, isUnfixed }) => {
+// コンポーネント
+export default function sidekickMainvisual({ sidekickData, contentsAnimation, isUnfixed }) {
   const [isMounted, setIsMounted] = useState(false);
   const [isAnimation, setIsAnimation] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -83,5 +84,3 @@ const sidekickMainvisual = ({ sidekickData, contentsAnimation, isUnfixed }) => {
     </div>
   );
 }
-
-export default sidekickMainvisual;

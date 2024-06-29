@@ -20,6 +20,7 @@ export const metadata = {
   },  
 }
 
+// コンポーネント
 export default async function top() {
   const photographListData  = await getPhotoListData(10, 'photograph');
   const snapshotListData  = await getPhotoListData(10, 'snapshot');

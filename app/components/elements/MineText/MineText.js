@@ -1,6 +1,7 @@
 import styles from '@/app/components/elements/MineText/MineText.module.scss';
 
-const MineText = ({ isAnimation }) => {
+// コンポーネント
+export default function MineText({ isAnimation }) {
   return (
     <>
       <svg
@@ -20,5 +21,3 @@ const MineText = ({ isAnimation }) => {
     </>
   );
 }
-
-export default MineText;

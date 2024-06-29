@@ -10,7 +10,8 @@ const barlow = Barlow({
   display: 'swap',
 });
 
-const PhotoPreview = ({ category, currentPhotoData, previousPhotoData, nextPhotoData, listNumber }) => {
+// コンポーネント
+export default function PhotoPreview({ category, currentPhotoData, previousPhotoData, nextPhotoData, listNumber }) {
   // 画像alt
   let imageAlt;
 
@@ -74,6 +75,4 @@ const PhotoPreview = ({ category, currentPhotoData, previousPhotoData, nextPhoto
       </nav>        
     </div>
   );
-};
-
-export default PhotoPreview;
+}

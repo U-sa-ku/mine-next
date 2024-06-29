@@ -24,7 +24,7 @@ const nextConfig = {
   },
   // URL末尾のスラッシュ
   trailingSlash: true,
-};
+}
 
 module.exports = withPWA({
   pwa: {

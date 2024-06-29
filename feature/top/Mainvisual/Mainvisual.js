@@ -5,7 +5,8 @@ import MineLogo from '@/app/components/elements/MineLogo/MineLogo';
 import MineText from '@/app/components/elements/MineText/MineText';
 import SiteNavigationItems from '@/app/components/blocks/SiteNavigationItems/SiteNavigationItems';
 
-const topMainvisual = () => {
+// コンポーネント
+export default function topMainvisual() {
   // オープニングアニメーション
   const [isAnimation, setIsAnimation] = useState(false);
   const animation = () => setTimeout(() => setIsAnimation(true), 500);
@@ -26,7 +27,7 @@ const topMainvisual = () => {
       setIsWrapperMargin(false);
       setIsNavigationFixed(true);
     }
-  };
+  }
 
   useEffect(() => {
     window.addEventListener('scroll', switchFixedNavigation);
@@ -57,5 +58,3 @@ const topMainvisual = () => {
     </>
   );
 }
-
-export default topMainvisual;

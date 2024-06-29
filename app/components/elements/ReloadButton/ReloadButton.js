@@ -4,7 +4,8 @@ import Image from 'next/image';
 import styles from '@/app/components/elements/ReloadButton/ReloadButton.module.scss';
 import Icon from '@/public/icon_reload.svg';
 
-export default function Loading() {
+// コンポーネント
+export default function ReloadButton() {
   const [isPwa, setIsPwa] = useState(false);
 
   // リロード

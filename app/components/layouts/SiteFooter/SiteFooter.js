@@ -8,12 +8,11 @@ const barlow = Barlow({
   display: "swap",
 });
 
-const SiteFooter = () => {
+// コンポーネント
+export default function SiteFooter() {
   return (
     <footer className={`${barlow.className} ${styles.layoutWrapper}`}>
       <p className={styles.copyright}>&copy;mine All Rights Reserved</p>
     </footer>
   );
-};
-
-export default SiteFooter;
+}

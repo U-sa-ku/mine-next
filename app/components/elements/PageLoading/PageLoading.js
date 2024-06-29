@@ -8,7 +8,8 @@ import LogoMineI from '@/public/logo_mine_i.svg';
 import LogoMineN from '@/public/logo_mine_n.svg';
 import LogoMineE from '@/public/logo_mine_e.svg';
 
-export default function Loading() {
+// コンポーネント
+export default function PageLoading() {
   const pathname = usePathname()
   const [isHidden, setIsHidden] = useState(false);
   const hidden = () => setIsHidden(true);

@@ -1,6 +1,4 @@
-//
 // photo API取得 (一覧)
-//////////////////////////////////////////////////////////////////////
 export const getPhotoListData = async (limit, category, sidekick) => {
   let apiCategoryFilter;
   let apiSidekickFilter;
@@ -31,9 +29,7 @@ export const getPhotoListData = async (limit, category, sidekick) => {
   return photoListData;
 }
 
-//
 // photo API取得 (一覧 + ページング)
-//////////////////////////////////////////////////////////////////////
 export const getPagingPhotoListData = async (limit, category, page) => {
   const photoListDataResponse = await fetch(
     `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}&filters=category[contains]${category}&offset=${(page - 1) * limit}`, {
@@ -49,9 +45,7 @@ export const getPagingPhotoListData = async (limit, category, page) => {
   return photoListData;
 }
 
-//
 // photo API取得 (詳細)
-//////////////////////////////////////////////////////////////////////
 export const getPhotoData = async (slug, category) => {
   // 現在の投稿データ取得
   const currentPhotoDataResponse = await fetch(
@@ -80,12 +74,10 @@ export const getPhotoData = async (slug, category) => {
   const previousPhotoData = currentPhotoIndex > 0 ? photoListData.contents[currentPhotoIndex - 1] : null;
   const nextPhotoData = currentPhotoIndex < photoListData.contents.length - 1 ? photoListData.contents[currentPhotoIndex + 1] : null;
 
-  return { currentPhotoData, previousPhotoData, nextPhotoData };
+  return { currentPhotoData, previousPhotoData, nextPhotoData }
 }
 
-//
 // sidekick API取得 (詳細)
-//////////////////////////////////////////////////////////////////////
 export const getSidekickData = async (slug) => {
   const sidekickDataResponse = await fetch(
     `${process.env.SERVICE_DOMAIN}/sidekick/${slug}`, {

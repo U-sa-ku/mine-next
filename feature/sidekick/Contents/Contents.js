@@ -6,7 +6,8 @@ import Description from '@/feature/sidekick/Description/Description';
 import Movie from '@/feature/sidekick/Movie/Movie';
 import PhotoSlider from "@/app/components/sections/PhotoSlider/PhotoSlider";
 
-const Contents = ({ sidekickData, photographListData, snapshotListData }) => {
+// コンポーネント
+export default function Contents({ sidekickData, photographListData, snapshotListData }) {
   const [isAnimation, setIsAnimation] = useState(false);
   const [isMovieRendering, setIsMovieRendering] = useState(false);
 
@@ -63,5 +64,3 @@ const Contents = ({ sidekickData, photographListData, snapshotListData }) => {
     </>
   );
 }
-
-export default Contents;

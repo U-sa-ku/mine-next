@@ -9,7 +9,8 @@ import SectionTitle from "@/app/components/elements/SectionTitle/SectionTitle";
 import LazyAnimationImage from "@/app/components/elements/LazyAnimationImage/LazyAnimationImage";
 import MoreButton from "@/app/components/elements/MoreButton/MoreButton";
 
-const PhotoSlider = ({ sectionName, photoListData }) => {
+// コンポーネント
+export default function PhotoSlider({ sectionName, photoListData }) {
   // リード文
   let lead;
 
@@ -86,6 +87,4 @@ const PhotoSlider = ({ sectionName, photoListData }) => {
       />
     </section>
   );
-};
-
-export default PhotoSlider;
+}

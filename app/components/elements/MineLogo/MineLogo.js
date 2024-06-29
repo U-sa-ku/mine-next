@@ -1,6 +1,7 @@
 import styles from '@/app/components/elements/MineLogo/MineLogo.module.scss';
 
-const MineLogo = ({ isAnimation }) => {
+// コンポーネント
+export default function MineLogo({ isAnimation }) {
   return (
     <>
       <svg
@@ -15,5 +16,3 @@ const MineLogo = ({ isAnimation }) => {
     </>
   );
 }
-
-export default MineLogo;

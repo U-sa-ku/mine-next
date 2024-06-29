@@ -6,7 +6,8 @@ import SectionTitle from "@/app/components/elements/SectionTitle/SectionTitle";
 import LazyAnimationImage from "@/app/components/elements/LazyAnimationImage/LazyAnimationImage";
 import Pagination from "@/app/components/elements/Pagination/Pagination";
 
-const PhotoList = ({ sectionName, photoListData, totalPages, currentPage }) => {
+// コンポーネント
+export default function PhotoList({ sectionName, photoListData, totalPages, currentPage }) {
   // リード文
   let lead;
 
@@ -60,6 +61,4 @@ const PhotoList = ({ sectionName, photoListData, totalPages, currentPage }) => {
       />
     </section>
   );
-};
-
-export default PhotoList;
+}

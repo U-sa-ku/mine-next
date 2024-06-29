@@ -5,7 +5,8 @@ import dynamic from 'next/dynamic';
 
 const ReactPlayer = dynamic(() => import('react-player/youtube'), { ssr: false });
 
-const Contents = ({ sidekickData }) => {
+// コンポーネント
+export default function Contents({ sidekickData }) {
   return (
     <section className={styles.wrapper}>
       <SectionTitle title='movie' />
@@ -29,5 +30,3 @@ const Contents = ({ sidekickData }) => {
     </section>
   );
 }
-
-export default Contents;

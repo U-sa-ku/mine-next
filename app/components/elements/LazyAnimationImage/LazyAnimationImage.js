@@ -4,7 +4,8 @@ import Image from 'next/image';
 import styles from "@/app/components/elements/LazyAnimationImage/LazyAnimationImage.module.scss";
 import ImageLoading from "@/app/components/elements/ImageLoading/ImageLoading";
 
-const LazyAnimationImage = (props) => {
+// コンポーネント
+export default function LazyAnimationImage(props) {
   const [isLoaded, setLoaded] = useState(false);
   
   return (
@@ -19,6 +20,4 @@ const LazyAnimationImage = (props) => {
       {/* eslint-disable-next-line jsx-a11y/alt-text */}
     </>
   );
-};
-
-export default LazyAnimationImage;
+}

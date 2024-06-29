@@ -5,7 +5,8 @@ import styles from "@/app/components/layouts/SiteHeader/SiteHeader.module.scss";
 import MineLogo from '@/app/components/elements/MineLogo/MineLogo';
 import MineText from '@/app/components/elements/MineText/MineText';
 
-const SiteHeader = ({ isScrollAnimation }) => {
+// コンポーネント
+export default function SiteHeader({ isScrollAnimation }) {
   const [isAnimation, setIsAnimation] = useState(false);
 
   const switchVisible = () => {
@@ -40,5 +41,3 @@ const SiteHeader = ({ isScrollAnimation }) => {
     </header>
   );
 }
-
-export default SiteHeader;

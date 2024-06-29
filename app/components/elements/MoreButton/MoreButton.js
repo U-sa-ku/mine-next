@@ -9,7 +9,8 @@ const barlow = Barlow({
   display: "swap",
 });
 
-const MoreButton = ({ link, text }) => {
+// コンポーネント
+export default function MoreButton({ link, text }) {
   return (
     <div className={`${barlow.className} ${styles.wrapper}`}>
       <Link
@@ -20,6 +21,4 @@ const MoreButton = ({ link, text }) => {
       </Link>
     </div>
   );
-};
-
-export default MoreButton;
+}

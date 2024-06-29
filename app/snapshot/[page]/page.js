@@ -35,6 +35,7 @@ export const metadata = {
   },    
 }
 
+// コンポーネント
 export default async function photograph({ params }) {
   const page = params.page ? parseInt(params.page, 10) : 1;
   const limit = 24;
