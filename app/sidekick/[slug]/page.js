@@ -1,6 +1,16 @@
 import { getSidekickData, getPhotoListData } from "@/libs/GetPostData"
 import Contents from '@/feature/sidekick/Contents/Contents';
 
+// 静的パス生成
+export async function generateStaticParams() {
+  const sidekickData = await getSidekickData();
+  const contents = sidekickData.contents;
+
+  return contents.map((content) => ({
+    slug: content.id,
+  }))  
+}
+
 // メタデータ生成
 export async function generateMetadata({ params }) {
   const sidekickData = await getSidekickData(params.slug);

@@ -77,10 +77,12 @@ export const getPhotoData = async (slug, category) => {
   return { currentPhotoData, previousPhotoData, nextPhotoData }
 }
 
-// sidekick API取得 (詳細)
+// sidekick API取得
 export const getSidekickData = async (slug) => {
+  const id = slug ? slug : '';
+
   const sidekickDataResponse = await fetch(
-    `${process.env.SERVICE_DOMAIN}/sidekick/${slug}`, {
+    `${process.env.SERVICE_DOMAIN}/sidekick/${id}`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,
       },
