@@ -1,6 +1,6 @@
 import LayoutWithHeader from '@/app/layout/layoutWithHeader';
 
-export default function photograph({ children }) {
+export default function PhotographPreviewLayout({ children }) {
   return (
     <LayoutWithHeader>
       {children}

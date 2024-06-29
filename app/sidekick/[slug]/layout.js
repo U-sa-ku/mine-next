@@ -1,6 +1,6 @@
 import LayoutWithScrollHeader from '@/app/layout/layoutWithScrollHeader';
 
-export default function photograph({ children }) {
+export default function SidekickLayout({ children }) {
   return (
     <LayoutWithScrollHeader>
       {children}

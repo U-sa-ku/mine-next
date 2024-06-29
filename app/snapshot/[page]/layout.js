@@ -1,6 +1,6 @@
 import LayoutWithHeader from '@/app/layout/layoutWithHeader';
 
-export default function snapshot({ children }) {
+export default function SnapshotLayout({ children }) {
   return (
     <LayoutWithHeader>
       {children}

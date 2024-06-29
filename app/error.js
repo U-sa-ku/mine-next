@@ -17,7 +17,7 @@ export const metadata = {
 }
 
 // コンポーネント
-export default async function notFound() {
+export default async function error() {
   return (
     <>
       <SiteHeader />
