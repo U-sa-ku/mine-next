@@ -41,6 +41,7 @@ export default function sidekickMainvisual({ sidekickData, contentsAnimation, is
             fill
             src={sidekickData.init_mainvisual_sp.url}
             alt={``}
+            sizes="(max-width: 767px) 100vw, (max-width: 1440px) 100vw, 100vw"
             className={`${styles.initImage} ${isMounted ? styles.visible : '' }`}
           />
           :
@@ -49,6 +50,7 @@ export default function sidekickMainvisual({ sidekickData, contentsAnimation, is
             fill
             src={sidekickData.init_mainvisual.url}
             alt={``}
+            sizes="(max-width: 767px) 100vw, (max-width: 1440px) 100vw, 100vw"
             className={`${styles.initImage} ${isMounted ? styles.visible : '' }`}
           />                    
         }
