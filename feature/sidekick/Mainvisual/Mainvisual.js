@@ -37,7 +37,6 @@ export default function sidekickMainvisual({ sidekickData, contentsAnimation, is
         {
           isMobile ?
           <Image
-            priority
             fill
             src={sidekickData.init_mainvisual_sp.url}
             alt={``}
@@ -46,7 +45,6 @@ export default function sidekickMainvisual({ sidekickData, contentsAnimation, is
           />
           :
           <Image
-            priority
             fill
             src={sidekickData.init_mainvisual.url}
             alt={``}
