@@ -120,7 +120,7 @@
   object-fit: cover;
   display: block;
   opacity: 0;
-  transition: 3s;
+  transition: 2s 1s;
   &.visible {
     opacity: 1;
   }  
