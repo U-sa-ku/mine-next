@@ -24,7 +24,7 @@ export default function PageLoading() {
     links.forEach((link) => {
       const href = new URL(link.href);
       
-      href.pathname != pathname ? link.addEventListener("click", visible) : '';
+      if(href.pathname != pathname) link.addEventListener("click", visible);
     });
 
     return () => {

@@ -35,19 +35,17 @@ export default function SiteNavigationItems({ isActive, isTop, isFixed, mainvisu
         return isLoadedImagesTemp;
       });
 
-      mainvisualAnimation ? mainvisualAnimation() : '';
+      if(mainvisualAnimation) mainvisualAnimation();
     }
   }
 
   useEffect(() => {
-    if(isTop) {
-      isLoadedImages.every(Boolean) ? setIsImageAnimation(true): '';
-    }    
+    if(isTop && isLoadedImages.every(Boolean)) setIsImageAnimation(true); 
   }, [isTop, isLoadedImages]);
 
   // ナビゲーションクローズ
   const closeNavigation = () => {
-    !isTop && hamburgerInactive ? hamburgerInactive() : '';
+    if(!isTop && hamburgerInactive) hamburgerInactive();
   }
 
   return (

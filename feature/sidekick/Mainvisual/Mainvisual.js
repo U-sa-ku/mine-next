@@ -12,22 +12,26 @@ const barlow = Barlow({
 });
 
 // コンポーネント
-export default function sidekickMainvisual({ sidekickData, contentsAnimation, isUnfixed }) {
+export default function sidekickMainvisual({ sidekickData, contentsAnimation, isUnfixed, isPc }) {
   const [isMounted, setIsMounted] = useState(false);
   const [isAnimation, setIsAnimation] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
 
   // オープニングアニメーション
   const animation = () => {
     setIsAnimation(true);
-    contentsAnimation ? contentsAnimation() : '';
+    if(contentsAnimation) contentsAnimation();
   }
 
   // デバイスによって画像切り替え
-  useEffect(() => {
+  const switchImage = () => {
     const windowWidth = window.innerWidth;
     
-    windowWidth >= 768 ? setIsMobile(false) : setIsMobile(true);
+    if(windowWidth >= 768 || isPc) setIsMobile(false);
+  }
+
+  useEffect(() => {
+    switchImage();
     setIsMounted(true);
   }, []);
 

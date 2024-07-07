@@ -19,13 +19,14 @@ export default function Contents({ sidekickData, photographListData, snapshotLis
 
   // PCブラウザの特定の高さ以下でパララックス無効化
   const [isMainvisualUnfixed, setMainvisualUnfixed] = useState(false);
+  const [isPc, setIsPc] = useState(false);
   
   const switchMainvisualFixed = () => {
     const windowHeight = window.innerHeight;
     const userAgent = navigator.userAgent;
-    const isPC = userAgent.indexOf('iPhone') == -1 || (userAgent.indexOf('Android') == -1 && userAgent.indexOf('Mobile') == -1) ? true : false;
 
-    windowHeight <= 950 && isPC ? setMainvisualUnfixed(true) : setMainvisualUnfixed(false);
+    userAgent.indexOf('iPhone') == -1 || (userAgent.indexOf('Android') == -1 && userAgent.indexOf('Mobile') == -1) ? setIsPc(true) : setIsPc(false);
+    windowHeight <= 950 && isPc ? setMainvisualUnfixed(true) : setMainvisualUnfixed(false);
   }
 
   useEffect(() => {
@@ -41,6 +42,7 @@ export default function Contents({ sidekickData, photographListData, snapshotLis
         sidekickData={sidekickData}
         contentsAnimation={contentsAnimation}
         isUnfixed={isMainvisualUnfixed}
+        isPc={isPc}
       />     
       <main className={`${styles.wrapper} ${isAnimation ? styles.animation : ''} ${isMainvisualUnfixed ? styles.mainvisualUnfixed : ''}`}>
         <i className={`${styles.scrollIcon} ${isAnimation ? styles.animation : ''} ${isMainvisualUnfixed ? styles.mainvisualUnfixed : ''}`}></i>
