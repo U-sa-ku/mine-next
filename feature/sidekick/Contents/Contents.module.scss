@@ -9,7 +9,7 @@
   position: relative;
   opacity: 0;
   transform: translateY(50px);
-  transition: 1s 1.5s;
+  transition: 1s 2s;
   &.animation {
     opacity: 1;
     transform: translateY(0px);
@@ -38,7 +38,7 @@
   transform: translateX(-50%);
   overflow: hidden;
   opacity: 0;
-  transition: 1s 1.5s;
+  transition: 1s 2s;
   &.mainvisualUnfixed {
     height: 7vw;
     top: -2vw;
