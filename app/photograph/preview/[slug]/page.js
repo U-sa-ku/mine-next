@@ -4,14 +4,14 @@ import PhotoPreview from "@/app/components/sections/PhotoPreview/PhotoPreview";
 const category = 'photograph';
 
 // 静的パス生成
-export async function generateStaticParams() {
-  const photoListData = await getPhotoListData(100, category);
-  const contents = photoListData.contents;
+// export async function generateStaticParams() {
+//   const photoListData = await getPhotoListData(100, category);
+//   const contents = photoListData.contents;
 
-  return contents.map((content) => ({
-    slug: content.id,
-  }))  
-}
+//   return contents.map((content) => ({
+//     slug: content.id,
+//   }))  
+// }
 
 // メタデータ生成
 export async function generateMetadata({ params }) {
