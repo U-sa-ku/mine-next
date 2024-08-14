@@ -30,6 +30,7 @@ export default function topMainvisual() {
   }
 
   useEffect(() => {
+    switchFixedNavigation();
     window.addEventListener('scroll', switchFixedNavigation);
     return () => window.removeEventListener('scroll', switchFixedNavigation);
   }, []);  
