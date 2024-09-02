@@ -1,26 +1,16 @@
 // photo API取得 (一覧)
 export const getPhotoListData = async (limit, category, sidekick) => {
-  let apiCategoryFilter;
-  let apiSidekickFilter;
+  let apiCategoryFilter = '';
+  let apiSidekickFilter = '';
 
-  if(category) {
-    apiCategoryFilter = `&filters=category[contains]${category}`;
-  } else {
-    apiCategoryFilter = '';
-  }
-
-  if(category && sidekick) {
-    apiSidekickFilter = `[and]sidekick[contains]${sidekick}`;
-  } else {
-    apiSidekickFilter = '';
-  }
+  if(category) apiCategoryFilter = `&filters=category[contains]${category}`;
+  if(category && sidekick) apiSidekickFilter = `[and]sidekick[contains]${sidekick}`;
 
   const photoListDataResponse = await fetch(
     `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}${apiCategoryFilter}${apiSidekickFilter}`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,
-      },
-      // next: { revalidate: 86400 },
+      }
     }
   );  
 
@@ -30,13 +20,16 @@ export const getPhotoListData = async (limit, category, sidekick) => {
 }
 
 // photo API取得 (一覧 + ページング)
-export const getPagingPhotoListData = async (limit, category, page) => {
+export const getPagingPhotoListData = async (limit, category, page, sidekick) => {
+  let apiSidekickFilter = '';
+
+  if(sidekick) apiSidekickFilter = `[and]sidekick[contains]${sidekick}`;
+
   const photoListDataResponse = await fetch(
-    `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}&filters=category[contains]${category}&offset=${(page - 1) * limit}`, {
+    `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}&filters=category[contains]${category}${apiSidekickFilter}&offset=${(page - 1) * limit}`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,
-      },
-      // next: { revalidate: 86400 },
+      }
     }
   );
 
@@ -52,8 +45,7 @@ export const getPhotoData = async (slug, category) => {
     `${process.env.SERVICE_DOMAIN}/photo/${slug}`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,
-      },
-      // next: { revalidate: 86400 },
+      }
     }
   );
 
@@ -64,8 +56,7 @@ export const getPhotoData = async (slug, category) => {
     `${process.env.SERVICE_DOMAIN}/photo/?limit=1000&filters=category[contains]${category}&fields=id&orders=publishedAt`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,
-      },
-      // next: { revalidate: 86400 },
+      }
     }
   );
 
@@ -85,8 +76,7 @@ export const getSidekickData = async (slug) => {
     `${process.env.SERVICE_DOMAIN}/sidekick/${id}`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,
-      },
-      // next: { revalidate: 86400 },
+      }
     }
   );
 
