@@ -50,20 +50,56 @@ export const getPhotoData = async (slug, category) => {
   );
 
   const currentPhotoData = await currentPhotoDataResponse.json();
+  const currentPhotoPublishedAt = currentPhotoData.publishedAt;
 
-  // 前後の投稿データ取得
-  const photoListDataResponse = await fetch(
-    `${process.env.SERVICE_DOMAIN}/photo/?limit=100&filters=category[contains]${category}&fields=id&orders=publishedAt`, {
+  // # 前後の投稿データ取得方法のメリットデメリット
+  //
+  // ## 別々で取得する方法 ※1
+  // - メリット : 1リクエストの投稿数の制限を受けない
+  // - デメリット : リクエスト数が増える、データ形式が変わる(contents配列になる)
+  //
+  // ## 1回で取得する方法 ※2
+  // - メリット : 1回のリクエストで取得できる
+  // - デメリット : 1リクエストの投稿数の制限を受ける
+
+  // 前の投稿データ取得 ※1
+  const previousPhotoDataResponse = await fetch(
+    `${process.env.SERVICE_DOMAIN}/photo/?limit=1&orders=-publishedAt&filters=category[contains]${category}[and]publishedAt[less_than]${currentPhotoPublishedAt}`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,
       }
     }
   );
 
-  const photoListData = await photoListDataResponse.json();
-  const currentPhotoIndex = photoListData.contents.findIndex(photoData => photoData.id === currentPhotoData.id);
-  const previousPhotoData = currentPhotoIndex > 0 ? photoListData.contents[currentPhotoIndex - 1] : null;
-  const nextPhotoData = currentPhotoIndex < photoListData.contents.length - 1 ? photoListData.contents[currentPhotoIndex + 1] : null;
+  let previousPhotoData = await previousPhotoDataResponse.json();
+  if(previousPhotoData.contents.length == 0) previousPhotoData = null;
+
+  // 次の投稿データ取得 ※1
+  const nextPhotoDataResponse = await fetch(
+    `${process.env.SERVICE_DOMAIN}/photo/?limit=1&orders=publishedAt&filters=category[contains]${category}[and]publishedAt[greater_than]${currentPhotoPublishedAt}`, {
+      headers: {
+        'X-API-KEY': process.env.API_KEY,
+      }
+    }
+  );
+
+  let nextPhotoData = await nextPhotoDataResponse.json();
+  if(nextPhotoData.contents.length == 0) nextPhotoData = null;
+
+  // 前後の投稿データ取得 ※2
+  // const photoListDataResponse = await fetch(
+  //   `${process.env.SERVICE_DOMAIN}/photo/?limit=100&filters=category[contains]${category}&fields=id&orders=publishedAt`, {
+  //     headers: {
+  //       'X-API-KEY': process.env.API_KEY,
+  //     }
+  //   }
+  // );
+
+  // const photoListData = await photoListDataResponse.json();
+  // const currentPhotoIndex = photoListData.contents.findIndex(photoData => photoData.id === currentPhotoData.id);
+  // const previousPhotoData = currentPhotoIndex > 0 ? photoListData.contents[currentPhotoIndex - 1] : null;
+  // const nextPhotoData = currentPhotoIndex < photoListData.contents.length - 1 ? photoListData.contents[currentPhotoIndex + 1] : null;
+
   return { currentPhotoData, previousPhotoData, nextPhotoData }
 }
 
