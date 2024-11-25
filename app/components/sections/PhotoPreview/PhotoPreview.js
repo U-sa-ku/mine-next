@@ -39,7 +39,7 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
         <div className={styles.navigationInner}>
           {previousPhotoData != null ?
             <Link
-              href={`/${category}/preview/${previousPhotoData.contents[0].id}/?list=${listNumber}`}
+              href={`/${category}/preview/${previousPhotoData.id}/?list=${listNumber}`}
               className={`${styles.navigationLink} ${styles.prev}`}
             >
               <span className={`${barlow.className} ${styles.caption}`}>prev</span>
@@ -64,7 +64,7 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
           </Link>
           {nextPhotoData != null ?
             <Link
-              href={`/${category}/preview/${nextPhotoData.contents[0].id}/?list=${listNumber}`}
+              href={`/${category}/preview/${nextPhotoData.id}/?list=${listNumber}`}
               className={`${styles.navigationLink} ${styles.next}`}
             >
               <span className={`${barlow.className} ${styles.caption}`}>next</span>
