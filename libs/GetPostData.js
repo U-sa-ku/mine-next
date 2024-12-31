@@ -51,17 +51,17 @@ export const getPhotoData = async (slug, category) => {
 
   const currentPhotoData = await currentPhotoDataResponse.json();
 
-
-  // 前後の投稿データ取得
   const photoListDataResponse = await fetch(
     `${process.env.SERVICE_DOMAIN}/photo/?limit=100&filters=category[contains]${category}&fields=id&orders=publishedAt`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,
+        'Cache-Control': 'no-store',
       }
     }
   );
 
   const photoListData = await photoListDataResponse.json();
+  console.log(photoListData);
   const currentPhotoIndex = photoListData.contents.findIndex(photoData => photoData.id === currentPhotoData.id);
   const previousPhotoData = currentPhotoIndex > 0 ? photoListData.contents[currentPhotoIndex - 1] : null;
   const nextPhotoData = currentPhotoIndex < photoListData.contents.length - 1 ? photoListData.contents[currentPhotoIndex + 1] : null;
