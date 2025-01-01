@@ -37,6 +37,7 @@ export default function PhotoSlider({ sectionName, photoListData }) {
         slidesPerView={1.3}
         spaceBetween={10}
         centeredSlides={true}
+        loop={true}
         breakpoints={{
           768: {
             slidesPerView: 1.265
