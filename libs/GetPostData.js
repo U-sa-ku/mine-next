@@ -56,6 +56,8 @@ export const getPhotoData = async (slug, category) => {
       headers: {
         'X-API-KEY': process.env.API_KEY,
         'Cache-Control': 'no-store',
+        'CDN-Cache-Control': 'no-store',
+        'Vercel-CDN-Cache-Control': 'no-store'        
       }
     }
   );
