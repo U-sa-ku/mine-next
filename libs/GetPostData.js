@@ -54,11 +54,9 @@ export const getPhotoData = async (slug, category) => {
   const photoListDataResponse = await fetch(
     `${process.env.SERVICE_DOMAIN}/photo/?limit=100&filters=category[contains]${category}&fields=id&orders=publishedAt`, {
       headers: {
-        'X-API-KEY': process.env.API_KEY,
-        'Cache-Control': 'no-store',
-        'CDN-Cache-Control': 'no-store',
-        'Vercel-CDN-Cache-Control': 'no-store'        
-      }
+        'X-API-KEY': process.env.API_KEY,     
+      },
+      cache: 'no-store'
     }
   );
 
