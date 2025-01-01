@@ -36,7 +36,7 @@ export const metadata = {
 }
 
 // コンポーネント
-export default async function photograph({ params }) {
+export default async function snapshot({ params }) {
   const page = params.page ? parseInt(params.page, 10) : 1;
   const limit = 24;
   const snapshotListData  = await getPagingPhotoListData(limit, category, page);
