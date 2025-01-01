@@ -61,7 +61,6 @@ export const getPhotoData = async (slug, category) => {
   );
 
   const photoListData = await photoListDataResponse.json();
-  console.log(photoListData);
   const currentPhotoIndex = photoListData.contents.findIndex(photoData => photoData.id === currentPhotoData.id);
   const previousPhotoData = currentPhotoIndex > 0 ? photoListData.contents[currentPhotoIndex - 1] : null;
   const nextPhotoData = currentPhotoIndex < photoListData.contents.length - 1 ? photoListData.contents[currentPhotoIndex + 1] : null;
