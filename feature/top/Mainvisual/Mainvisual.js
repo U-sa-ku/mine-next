@@ -1,9 +1,17 @@
 "use client";
 import { useEffect, useState } from 'react';
+import { Barlow } from "next/font/google";
 import styles from "@/feature/top/Mainvisual/Mainvisual.module.scss";
 import MineLogo from '@/app/components/elements/MineLogo/MineLogo';
 import MineText from '@/app/components/elements/MineText/MineText';
 import SiteNavigationItems from '@/app/components/blocks/SiteNavigationItems/SiteNavigationItems';
+
+// Googleフォント
+const barlow = Barlow({
+  weight: ["300"],
+  subsets: ["latin"],
+  display: "swap",
+});
 
 // コンポーネント
 export default function topMainvisual() {
@@ -38,10 +46,13 @@ export default function topMainvisual() {
   return (
     <>
       <div className={`${styles.wrapper} ${isWrapperMargin ? styles.switchMargin : ''}`}>
-        <h1 className={styles.logo}>
-          <MineLogo isAnimation={isAnimation} />
-          <MineText isAnimation={isAnimation} />
-        </h1>
+        <div className={styles.inner}>
+          <h1 className={styles.logo}>
+            <MineLogo isAnimation={isAnimation} />
+            <MineText isAnimation={isAnimation} />
+          </h1>
+          <p className={`${barlow.className} ${styles.lead} ${isAnimation ? styles.animation : ''}`}>sidekick &amp; photo archive</p>
+        </div>
         <i className={`${styles.scrollIcon} ${isAnimation ? styles.animation : ''}`}>
           <i className={styles.scrollIconBorder}></i>
         </i>
