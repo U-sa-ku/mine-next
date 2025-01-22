@@ -19,7 +19,7 @@ const barlow = Barlow({
 export default function SiteNavigationItems({ isActive, isTop, isFixed, mainvisualAnimation, hamburgerInactive }) { 
   const items = [
     { href: '/sidekick/2wheels/', caption: '2wheels', imageSrc: Image2wheels, imageAlt: 'YAMAHA SR400の画像' },
-    { href: '/sidekick/mirrorless/', caption: 'Mirrorless', imageSrc: ImageMirrorless, imageAlt: 'OLYMPUS OM-D E-M10の画像' },
+    { href: '/sidekick/mirrorless/', caption: 'mirrorless', imageSrc: ImageMirrorless, imageAlt: 'OLYMPUS OM-D E-M10の画像' },
     { href: '/sidekick/4wheels/', caption: '4wheels', imageSrc: Image4wheels, imageAlt: 'SUZUKI Kei Worksの画像' },
   ];
 
