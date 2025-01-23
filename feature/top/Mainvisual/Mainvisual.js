@@ -62,7 +62,7 @@ export default function topMainvisual() {
         <figure className={`${styles.frame} ${styles.left} ${isAnimation ? styles.animation : ''}`}></figure>
       </div>
       <SiteNavigationItems
-        isActive={true}
+        isNavigationActive={true}
         isTop={true}
         isFixed={isNavigationFixed}        
         mainvisualAnimation={animation}
