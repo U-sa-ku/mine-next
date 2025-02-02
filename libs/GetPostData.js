@@ -10,9 +10,6 @@ export const getPhotoListData = async (limit, category, sidekick) => {
     `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}${apiCategoryFilter}${apiSidekickFilter}`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,
-      },
-      next: {
-        revalidate: 60
       }
     }
   );  
@@ -32,9 +29,6 @@ export const getPagingPhotoListData = async (limit, category, page, sidekick) =>
     `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}&filters=category[contains]${category}${apiSidekickFilter}&offset=${(page - 1) * limit}`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,
-      },
-      next: {
-        revalidate: 60
       }
     }
   );
@@ -51,9 +45,6 @@ export const getPhotoData = async (slug, category) => {
     `${process.env.SERVICE_DOMAIN}/photo/${slug}`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,
-      },
-      next: {
-        revalidate: 60
       }
     }
   );
@@ -65,9 +56,6 @@ export const getPhotoData = async (slug, category) => {
     `${process.env.SERVICE_DOMAIN}/photo/?limit=100&filters=category[contains]${category}&fields=id&orders=publishedAt`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,     
-      },
-      next: {
-        revalidate: 60
       }
     }
   );
@@ -88,9 +76,6 @@ export const getSidekickData = async (slug) => {
     `${process.env.SERVICE_DOMAIN}/sidekick/${id}`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,
-      },
-      next: {
-        revalidate: 60
       }
     }
   );
