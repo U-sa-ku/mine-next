@@ -13,7 +13,8 @@
   @media (max-width: 999px) {
     height: 50px;
   }
-  &.animation {
+  &.animation,
+  &.noAnimation {
     opacity: 1;
   }
 }

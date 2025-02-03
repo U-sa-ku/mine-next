@@ -5,9 +5,13 @@
   stroke-width: 3;
   stroke-miterlimit:10;
   transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715), fill 1.3s cubic-bezier(0.47, 0, 0.745, 0.715) 1s;
-  &.animation {
+  &.animation,
+  &.noAnimation {
     stroke-dashoffset: 0;
     fill: rgb(255, 255, 255);
+  }
+  &.noAnimation {
+    animation: none;
   }
 }
 .rect01 {

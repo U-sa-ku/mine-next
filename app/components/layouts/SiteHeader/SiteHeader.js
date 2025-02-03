@@ -6,7 +6,7 @@ import MineLogo from '@/app/components/elements/MineLogo/MineLogo';
 import MineText from '@/app/components/elements/MineText/MineText';
 
 // コンポーネント
-export default function SiteHeader({ isScrollAnimation }) {
+export default function SiteHeader({ isScrollAnimation, isNoAnimation }) {
   const [isAnimation, setIsAnimation] = useState(false);
 
   const switchVisible = () => {
@@ -26,16 +26,22 @@ export default function SiteHeader({ isScrollAnimation }) {
   }, [isScrollAnimation]); 
 
   return (
-    <header className={`${styles.wrapper} ${isAnimation ? styles.animation : ''}`}>
+    <header className={`${styles.wrapper} ${isAnimation ? styles.animation : ''} ${isNoAnimation ? styles.noAnimation : ''}`}>
       <Link
         href="/"
         className={styles.logoWrapper}
       >
         <figure className={styles.logo}>
-          <MineLogo isAnimation={isAnimation} />
+          <MineLogo
+            isAnimation={isAnimation}
+            isNoAnimation={isNoAnimation}
+          />
         </figure>
         <figure className={styles.text}>
-          <MineText isAnimation={isAnimation} />
+          <MineText
+            isAnimation={isAnimation}
+            isNoAnimation={isNoAnimation}
+          />
         </figure>
       </Link>
     </header>

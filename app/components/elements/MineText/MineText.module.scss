@@ -6,10 +6,14 @@
   stroke:#FFFFFF;
   stroke-width: 1;
   stroke-miterlimit:10;
-  &.animation {
+  &.animation,
+  &.noAnimation {
     stroke-dashoffset: 0;
     fill: #FFFFFF;
   }
+  &.noAnimation {
+    animation: none;
+  }  
 }
 .path01 {
   stroke-dashoffset: 336.7806396484375px;
