@@ -1,3 +1,5 @@
+"use client";
+import { useState, useEffect } from 'react';
 import Link from "next/link";
 import { Barlow } from 'next/font/google';
 import styles from "@/app/components/sections/PhotoPreview/PhotoPreview.module.scss";
@@ -12,6 +14,9 @@ const barlow = Barlow({
 
 // コンポーネント
 export default function PhotoPreview({ category, currentPhotoData, previousPhotoData, nextPhotoData, listNumber }) {
+  const [isSlideImageToRight, setIsSlideImageToRight] = useState(false);
+  const [isSlideImageToLeft, setIsSlideImageToLeft] = useState(false);
+
   // 画像alt
   let imageAlt;
 
@@ -21,11 +26,21 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
     imageAlt = 'スマートフォンで撮った写真'
   }
 
+  // 画像を右にスライドアウト
+  const slideImageToRight = () => {
+    setIsSlideImageToRight(true);
+  }
+  
+  // 画像を左にスライドアウト
+  const slideImageToLeft = () => {
+    setIsSlideImageToLeft(true);
+  }  
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.previewStage}>
         <h1
-          className={styles.imageWrapper}
+          className={`${styles.imageWrapper} ${isSlideImageToRight ? styles.slideImageToRight : ''} ${isSlideImageToLeft ? styles.slideImageToLeft : ''}`}
         >
           <LazyAnimationImage
             fill
@@ -41,6 +56,7 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
             <Link
               href={`/${category}/preview/${previousPhotoData.id}/?list=${listNumber}`}
               className={`${styles.navigationLink} ${styles.prev}`}
+              onClick={slideImageToRight}
             >
               <span className={`${barlow.className} ${styles.caption}`}>prev</span>
             </Link>
@@ -66,6 +82,7 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
             <Link
               href={`/${category}/preview/${nextPhotoData.id}/?list=${listNumber}`}
               className={`${styles.navigationLink} ${styles.next}`}
+              onClick={slideImageToLeft}
             >
               <span className={`${barlow.className} ${styles.caption}`}>next</span>
             </Link>
