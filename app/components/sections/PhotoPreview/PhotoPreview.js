@@ -27,25 +27,14 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
   }
 
   // 画像を右にスライドアウト
-  const slideImageToRight = (e, href) => {
-    e.preventDefault();
+  const slideImageToRight = () => {
     setIsSlideImageToRight(true);
-    delayPageTransition(href);
   }
   
   // 画像を左にスライドアウト
-  const slideImageToLeft = (e, href) => {
-    e.preventDefault();
+  const slideImageToLeft = () => {
     setIsSlideImageToLeft(true);
-    delayPageTransition(href);
-  }
-
-  // ページ遷移遅延
-  const delayPageTransition = (href) => {
-    setTimeout(() => {
-      window.location.href = href;
-    }, 100);  
-  }
+  }  
 
   return (
     <div className={styles.wrapper}>
@@ -65,9 +54,9 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
         <div className={styles.navigationInner}>
           {previousPhotoData != null ?
             <Link
-              href={''}
+              href={`/${category}/preview/${previousPhotoData.id}/?list=${listNumber}`}
               className={`${styles.navigationLink} ${styles.prev}`}
-              onClick={(e) => slideImageToRight(e, `/${category}/preview/${previousPhotoData.id}/?list=${listNumber}`)}
+              onClick={slideImageToRight}
             >
               <span className={`${barlow.className} ${styles.caption}`}>prev</span>
             </Link>
@@ -91,9 +80,9 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
           </Link>
           {nextPhotoData != null ?
             <Link
-              href={''}
+              href={`/${category}/preview/${nextPhotoData.id}/?list=${listNumber}`}
               className={`${styles.navigationLink} ${styles.next}`}
-              onClick={(e) => slideImageToLeft(e, `/${category}/preview/${nextPhotoData.id}/?list=${listNumber}`)}
+              onClick={slideImageToLeft}
             >
               <span className={`${barlow.className} ${styles.caption}`}>next</span>
             </Link>
