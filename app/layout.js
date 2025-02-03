@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
       </head>      
       <body className={notojp.className}>
         <ReloadButton />
-        <PageLoading />
+        {/* <PageLoading /> */}
         <div className={styles.contentsWrapper}>
           <SiteNavigation />
           {children}
