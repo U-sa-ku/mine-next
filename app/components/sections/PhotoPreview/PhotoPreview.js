@@ -44,7 +44,7 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
   const delayPageTransition = (href) => {
     setTimeout(() => {
       window.location.href = href;
-    }, 300);  
+    }, 100);  
   }
 
   return (
