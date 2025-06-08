@@ -26,9 +26,7 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
   return (
     <div className={styles.wrapper}>
       <div className={styles.previewStage}>
-        <h1
-          className={`${styles.imageWrapper} ${isSlideImageToLeft ? styles.slideImageToLeft : ''}`}
-        >
+        <h1 className={styles.imageWrapper}>
           <LazyAnimationImage
             fill
             src={currentPhotoData.photo.url}
