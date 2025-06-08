@@ -21,6 +21,7 @@ export default function Pagination({ sectionName, totalPages, currentPage }) {
           <Link
             href={`/${sectionName}/${index + 1}/`}
             className={`${barlow.className} ${styles.link}`}
+            prefetch={true}
           >
             {index + 1}
           </Link>

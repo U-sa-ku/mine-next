@@ -57,6 +57,7 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
               href={`/${category}/preview/${previousPhotoData.id}/?list=${listNumber}`}
               className={`${styles.navigationLink} ${styles.prev}`}
               onClick={slideImageToRight}
+              prefetch={true}
             >
               <span className={`${barlow.className} ${styles.caption}`}>prev</span>
             </Link>
@@ -65,6 +66,7 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
           <Link
             href={`/${category}/${listNumber}/`}
             className={`${styles.navigationLink} ${styles.list}`}
+            prefetch={true}
           >
             <span className={styles.navigationListIcon}>
               <i className={styles.navigationListIconSquare}></i>
@@ -83,6 +85,7 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
               href={`/${category}/preview/${nextPhotoData.id}/?list=${listNumber}`}
               className={`${styles.navigationLink} ${styles.next}`}
               onClick={slideImageToLeft}
+              prefetch={true}
             >
               <span className={`${barlow.className} ${styles.caption}`}>next</span>
             </Link>

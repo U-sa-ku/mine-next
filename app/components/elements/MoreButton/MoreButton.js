@@ -16,6 +16,7 @@ export default function MoreButton({ link, text }) {
       <Link
         href={link}
         className={styles.link}
+        prefetch={true}
       >
         more { text }
       </Link>

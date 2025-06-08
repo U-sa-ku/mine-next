@@ -37,6 +37,7 @@ export default function PhotoList({ sectionName, photoListData, totalPages, curr
             <Link
               href={`/${sectionName}/preview/${data.id}/?list=${currentPage}`}
               className={styles.link}
+              prefetch={true}
             >
               <figure className={styles.image}>
                 <LazyAnimationImage

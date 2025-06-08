@@ -56,6 +56,7 @@ export default function SiteNavigationItems({ isTop, isFixed, mainvisualAnimatio
           href={itemData.href}
           className={`${styles.item} ${isTop ? styles.top : ''}`}
           onClick={closeNavigation}
+          prefetch={true}
         >
           <p className={`${barlow.className} ${styles.caption}`}>{itemData.caption}</p>
           <Image
