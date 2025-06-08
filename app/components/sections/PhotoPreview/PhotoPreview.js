@@ -14,9 +14,6 @@ const barlow = Barlow({
 
 // コンポーネント
 export default function PhotoPreview({ category, currentPhotoData, previousPhotoData, nextPhotoData, listNumber }) {
-  const [isSlideImageToRight, setIsSlideImageToRight] = useState(false);
-  const [isSlideImageToLeft, setIsSlideImageToLeft] = useState(false);
-
   // 画像alt
   let imageAlt;
 
@@ -26,21 +23,11 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
     imageAlt = 'スマートフォンで撮った写真'
   }
 
-  // 画像を右にスライドアウト
-  const slideImageToRight = () => {
-    setIsSlideImageToRight(true);
-  }
-  
-  // 画像を左にスライドアウト
-  const slideImageToLeft = () => {
-    setIsSlideImageToLeft(true);
-  }  
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.previewStage}>
         <h1
-          className={`${styles.imageWrapper} ${isSlideImageToRight ? styles.slideImageToRight : ''} ${isSlideImageToLeft ? styles.slideImageToLeft : ''}`}
+          className={`${styles.imageWrapper} ${isSlideImageToLeft ? styles.slideImageToLeft : ''}`}
         >
           <LazyAnimationImage
             fill
@@ -56,7 +43,6 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
             <Link
               href={`/${category}/preview/${previousPhotoData.id}/?list=${listNumber}`}
               className={`${styles.navigationLink} ${styles.prev}`}
-              onClick={slideImageToRight}
               prefetch={true}
             >
               <span className={`${barlow.className} ${styles.caption}`}>prev</span>
@@ -84,7 +70,6 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
             <Link
               href={`/${category}/preview/${nextPhotoData.id}/?list=${listNumber}`}
               className={`${styles.navigationLink} ${styles.next}`}
-              onClick={slideImageToLeft}
               prefetch={true}
             >
               <span className={`${barlow.className} ${styles.caption}`}>next</span>
