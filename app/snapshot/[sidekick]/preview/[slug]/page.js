@@ -15,15 +15,18 @@ const category = 'snapshot';
 
 // メタデータ生成
 export async function generateMetadata({ params }) {
+  const sidekick = params.sidekick;
   const { currentPhotoData }  = await getPhotoData(params.slug, category);
+  const metaTitle = `preview | ${sidekick} | snapshot | mine`;
+  const metaDescription = 'スマートフォンで撮った写真プレビュー';  
 
   return {
-    title: "preview | snapshot | mine",
-    description: "スマートフォンで撮った写真プレビュー",
+    title: metaTitle,
+    description: metaDescription,
     openGraph: {
-      title: "preview | snapshot | mine",
-      description: "スマートフォンで撮った写真プレビュー",
-      url: `${process.env.CONTENTS_DOMAIN}/snapshot/preview/${params.slug}`,
+      title: metaTitle,
+      description: metaDescription,
+      url: `${process.env.CONTENTS_DOMAIN}/snapshot/${sidekick}/preview/${params.slug}`,
       siteName: "mine",
       images: [
         {

@@ -18,21 +18,27 @@ export async function generateStaticParams() {
 }
 
 // メタデータ生成
-export const metadata = {
-  title: `${category} | mine`,
-  description: "ミラーレス一眼で撮った写真一覧",
-  openGraph: {
-    title: `${category} | mine`,
-    description: "ミラーレス一眼で撮った写真一覧",
-    url: `${process.env.CONTENTS_DOMAIN}/${category}/1/`,
-    siteName: "mine",
-    images: [
-      {
-        url: `${process.env.CONTENTS_DOMAIN}/ogp.png`,
-      },
-    ],
-    type: "website",
-  },    
+export async function generateMetadata({ params }) {
+  const sidekick = params.sidekick;
+  const metaTitle = `${sidekick} | ${category} | mine`;
+  const metaDescription = 'ミラーレス一眼で撮った写真一覧';
+
+  return {
+    title: metaTitle,
+    description: metaDescription,
+    openGraph: {
+      title: metaTitle,
+      description: metaDescription,
+      url: `${process.env.CONTENTS_DOMAIN}/${category}/${sidekick}/1/`,
+      siteName: "mine",
+      images: [
+        {
+          url: `${process.env.CONTENTS_DOMAIN}/ogp.png`,
+        },
+      ],
+      type: "website",
+    },
+  };
 }
 
 // コンポーネント
