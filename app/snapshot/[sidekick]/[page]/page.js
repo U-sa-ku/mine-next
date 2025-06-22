@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const sidekick = params.sidekick;
   const metaTitle = `${sidekick} | ${category} | mine`;
-  const metaDescription = 'スマートフォンで撮った写真一覧';
+  const metaDescription = 'スマートフォンで撮影した写真一覧';
 
   return {
     title: metaTitle,

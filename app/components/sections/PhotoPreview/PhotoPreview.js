@@ -18,9 +18,9 @@ export default function PhotoPreview({ category, sidekick, currentPhotoData, pre
   let imageAlt;
 
   if(category == 'photograph') {
-    imageAlt = 'ミラーレス一眼で撮った写真';
+    imageAlt = 'ミラーレス一眼で撮影した写真';
   } else if(category == 'snapshot') {
-    imageAlt = 'スマートフォンで撮った写真'
+    imageAlt = 'スマートフォンで撮影した写真'
   }
 
   return (

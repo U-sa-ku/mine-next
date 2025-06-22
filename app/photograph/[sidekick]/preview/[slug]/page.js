@@ -18,7 +18,7 @@ export async function generateMetadata({ params }) {
   const sidekick = params.sidekick;
   const { currentPhotoData }  = await getPhotoData(params.slug, category);
   const metaTitle = `preview | ${sidekick} | photograph | mine`;
-  const metaDescription = 'ミラーレス一眼で撮った写真プレビュー';
+  const metaDescription = 'ミラーレス一眼で撮影した写真プレビュー';
 
   return {
     title: metaTitle,

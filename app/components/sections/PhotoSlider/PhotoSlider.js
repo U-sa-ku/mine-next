@@ -15,9 +15,9 @@ export default function PhotoSlider({ category, sidekick, photoListData }) {
   let lead;
 
   if(category == 'photograph') {
-    lead = 'ミラーレス一眼で撮った写真';
+    lead = 'ミラーレス一眼で撮影した写真';
   } else if(category == 'snapshot') {
-    lead = 'スマートフォンで撮った写真'
+    lead = 'スマートフォンで撮影した写真'
   } else {
     lead = '';
   }
