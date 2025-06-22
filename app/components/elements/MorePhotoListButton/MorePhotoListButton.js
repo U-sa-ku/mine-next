@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Barlow } from "next/font/google";
-import styles from "@/app/components/elements/MoreButton/MoreButton.module.scss";
+import styles from "@/app/components/elements/MorePhotoListButton/MorePhotoListButton.module.scss";
 
 // Googleフォント
 const barlow = Barlow({
@@ -10,7 +10,7 @@ const barlow = Barlow({
 });
 
 // コンポーネント
-export default function MoreButton({ link, text }) {
+export default function MorePhotoListButton({ link, text }) {
   return (
     <div className={`${barlow.className} ${styles.wrapper}`}>
       <Link

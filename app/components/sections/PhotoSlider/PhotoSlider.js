@@ -8,10 +8,10 @@ import styles from "@/app/components/sections/PhotoSlider/PhotoSlider.module.scs
 import SectionTitle from "@/app/components/elements/SectionTitle/SectionTitle";
 import PhotoListNavigation from "@/app/components/elements/PhotoListNavigation/PhotoListNavigation";
 import LazyAnimationImage from "@/app/components/elements/LazyAnimationImage/LazyAnimationImage";
-import MoreButton from "@/app/components/elements/MoreButton/MoreButton";
+import MorePhotoListButton from "@/app/components/elements/MorePhotoListButton/MorePhotoListButton";
 
 // コンポーネント
-export default function PhotoSlider({ category, sidekick, photoListData, isShowNavigation }) {
+export default function PhotoSlider({ category, sidekick, photoListData }) {
   // リード文
   let lead;
 
@@ -24,7 +24,7 @@ export default function PhotoSlider({ category, sidekick, photoListData, isShowN
   }
 
   // 一覧リンクのパス
-  const moreButtonSidekick = sidekick ? sidekick : 'all';
+  const sidekickName = sidekick ? sidekick : 'all';
 
   // Swiperのコントローラー
   const navigationPrevRef = useRef(null);
@@ -36,13 +36,6 @@ export default function PhotoSlider({ category, sidekick, photoListData, isShowN
     <section className={styles.wrapper}>
       <SectionTitle title={category} />
       <p className={styles.lead}>{lead}</p>
-      {isShowNavigation ?
-        <PhotoListNavigation
-          category={category}
-          sidekick={sidekick}
-        />
-        : null
-      }
       <Swiper
         modules={[Navigation]}
         slidesPerView={1.3}
@@ -93,9 +86,9 @@ export default function PhotoSlider({ category, sidekick, photoListData, isShowN
           className={`${styles.navigationNext} ${isEnd ? styles.disabled : ''}`}
         ></div>      
       </Swiper>
-      <MoreButton
-        link={`/${category}/${moreButtonSidekick}/1/`}
-        text={category}
+      <MorePhotoListButton
+        link={`/${category}/${sidekickName}/1/`}
+        text={`${sidekickName} ${category}`}
       />
     </section>
   );
