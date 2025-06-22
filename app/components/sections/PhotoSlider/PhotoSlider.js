@@ -6,11 +6,12 @@ import 'swiper/scss';
 import 'swiper/scss/navigation';
 import styles from "@/app/components/sections/PhotoSlider/PhotoSlider.module.scss";
 import SectionTitle from "@/app/components/elements/SectionTitle/SectionTitle";
+import PhotoListNavigation from "@/app/components/elements/PhotoListNavigation/PhotoListNavigation";
 import LazyAnimationImage from "@/app/components/elements/LazyAnimationImage/LazyAnimationImage";
 import MoreButton from "@/app/components/elements/MoreButton/MoreButton";
 
 // コンポーネント
-export default function PhotoSlider({ category, sidekick, photoListData }) {
+export default function PhotoSlider({ category, sidekick, photoListData, isShowNavigation }) {
   // リード文
   let lead;
 
@@ -35,6 +36,13 @@ export default function PhotoSlider({ category, sidekick, photoListData }) {
     <section className={styles.wrapper}>
       <SectionTitle title={category} />
       <p className={styles.lead}>{lead}</p>
+      {isShowNavigation ?
+        <PhotoListNavigation
+          category={category}
+          sidekick={sidekick}
+        />
+        : null
+      }
       <Swiper
         modules={[Navigation]}
         slidesPerView={1.3}

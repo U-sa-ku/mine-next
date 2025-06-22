@@ -1,19 +1,11 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Barlow } from "next/font/google";
 import styles from "@/app/components/sections/PhotoList/PhotoList.module.scss";
 import SectionTitle from "@/app/components/elements/SectionTitle/SectionTitle";
 import PhotoListNavigation from "@/app/components/elements/PhotoListNavigation/PhotoListNavigation";
 import LazyAnimationImage from "@/app/components/elements/LazyAnimationImage/LazyAnimationImage";
 import Pagination from "@/app/components/elements/Pagination/Pagination";
-
-// Googleフォント
-const barlow = Barlow({
-  weight: ["300"],
-  subsets: ["latin"],
-  display: "swap",
-});
 
 // コンポーネント
 export default function PhotoList({ category, sidekick, photoListData, totalPages, currentPage }) {

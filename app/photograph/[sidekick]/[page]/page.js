@@ -66,6 +66,7 @@ export default async function photograph({ params }) {
             category='snapshot'
             sidekick={sidekick}
             photoListData={snapshotListData.contents}
+            isShowNavigation={true}
           />
         </div>
       }
