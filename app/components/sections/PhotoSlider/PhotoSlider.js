@@ -10,17 +10,20 @@ import LazyAnimationImage from "@/app/components/elements/LazyAnimationImage/Laz
 import MoreButton from "@/app/components/elements/MoreButton/MoreButton";
 
 // コンポーネント
-export default function PhotoSlider({ sectionName, photoListData }) {
+export default function PhotoSlider({ category, sidekick, photoListData }) {
   // リード文
   let lead;
 
-  if(sectionName == 'photograph') {
+  if(category == 'photograph') {
     lead = 'ミラーレス一眼で撮った写真';
-  } else if(sectionName == 'snapshot') {
+  } else if(category == 'snapshot') {
     lead = 'スマートフォンで撮った写真'
   } else {
     lead = '';
   }
+
+  // 一覧リンクのパス
+  const moreButtonSidekick = sidekick ? sidekick : 'all';
 
   // Swiperのコントローラー
   const navigationPrevRef = useRef(null);
@@ -30,7 +33,7 @@ export default function PhotoSlider({ sectionName, photoListData }) {
 
   return (
     <section className={styles.wrapper}>
-      <SectionTitle title={sectionName} />
+      <SectionTitle title={category} />
       <p className={styles.lead}>{lead}</p>
       <Swiper
         modules={[Navigation]}
@@ -67,7 +70,7 @@ export default function PhotoSlider({ sectionName, photoListData }) {
               <LazyAnimationImage
                 fill
                 src={data.photo.url}
-                alt={`${sectionName}カテゴリの写真${index + 1}`}
+                alt={`${category}カテゴリの写真${index + 1}`}
                 sizes="(max-width: 767px) 287px, (max-width: 1440px) 1125px, 1277px"
               />
             </div>
@@ -83,8 +86,8 @@ export default function PhotoSlider({ sectionName, photoListData }) {
         ></div>      
       </Swiper>
       <MoreButton
-        link={`/${sectionName}/1/`}
-        text={sectionName}
+        link={`/${category}/${moreButtonSidekick}/1/`}
+        text={category}
       />
     </section>
   );

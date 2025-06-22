@@ -29,11 +29,11 @@ export default async function top() {
     <>
       <Mainvisual />
       <PhotoSlider
-        sectionName='photograph'
+        category='photograph'
         photoListData={photographListData.contents}
       />
       <PhotoSlider
-        sectionName='snapshot'
+        category='snapshot'
         photoListData={snapshotListData.contents}
       />
     </>

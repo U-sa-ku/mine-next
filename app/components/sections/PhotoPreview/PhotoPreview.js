@@ -13,7 +13,7 @@ const barlow = Barlow({
 });
 
 // コンポーネント
-export default function PhotoPreview({ category, currentPhotoData, previousPhotoData, nextPhotoData, listNumber }) {
+export default function PhotoPreview({ category, sidekick, currentPhotoData, previousPhotoData, nextPhotoData, listNumber }) {
   // 画像alt
   let imageAlt;
 
@@ -39,7 +39,7 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
         <div className={styles.navigationInner}>
           {previousPhotoData != null ?
             <Link
-              href={`/${category}/preview/${previousPhotoData.id}/?list=${listNumber}`}
+              href={`/${category}/${sidekick}/preview/${previousPhotoData.id}/?list=${listNumber}`}
               className={`${styles.navigationLink} ${styles.prev}`}
               prefetch={true}
             >
@@ -48,7 +48,7 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
             : null
           }        
           <Link
-            href={`/${category}/${listNumber}/`}
+            href={`/${category}/${sidekick}/${listNumber}/`}
             className={`${styles.navigationLink} ${styles.list}`}
             prefetch={true}
           >
@@ -66,7 +66,7 @@ export default function PhotoPreview({ category, currentPhotoData, previousPhoto
           </Link>
           {nextPhotoData != null ?
             <Link
-              href={`/${category}/preview/${nextPhotoData.id}/?list=${listNumber}`}
+              href={`/${category}/${sidekick}/preview/${nextPhotoData.id}/?list=${listNumber}`}
               className={`${styles.navigationLink} ${styles.next}`}
               prefetch={true}
             >

@@ -37,12 +37,14 @@ export async function generateMetadata({ params }) {
 
 // コンポーネント
 export default async function photographPreview({ params, searchParams }) {
-  const { currentPhotoData, previousPhotoData, nextPhotoData }  = await getPhotoData(params.slug, category);
+  const sidekick = params.sidekick;
+  const { currentPhotoData, previousPhotoData, nextPhotoData }  = await getPhotoData(params.slug, category, sidekick);
   const listNumber = searchParams.list ? searchParams.list : 1;
 
   return (
     <PhotoPreview
       category={category}
+      sidekick={sidekick}
       currentPhotoData={currentPhotoData}
       previousPhotoData={previousPhotoData}
       nextPhotoData={nextPhotoData}

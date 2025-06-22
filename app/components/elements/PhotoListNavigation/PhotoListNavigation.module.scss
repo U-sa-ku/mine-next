@@ -1,0 +1,41 @@
+@use '@/app/styles/variables' as v;
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 35px;
+  @media (max-width: 999px) {
+    margin-bottom: 15px;
+  }
+}
+.link {
+  color: inherit;
+  font-size: 2rem;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  margin: 0px 10px 15px;
+  position: relative;
+  @media (max-width: 999px) {
+    font-size: 1.6rem;
+  }
+  @media (min-width: 769px) {
+    &:hover:before {
+      transform: scaleX(1) !important;
+    }
+  }
+  &:before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #fff;
+    position: absolute;
+    left: 0px;
+    bottom: -3px;
+    z-index: 1;
+    transition: 0.3s;
+  }
+  &:not(.current):before {
+    transform: scaleX(0);
+  }  
+}

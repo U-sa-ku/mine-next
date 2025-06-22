@@ -1,19 +1,28 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { Barlow } from "next/font/google";
 import styles from "@/app/components/sections/PhotoList/PhotoList.module.scss";
 import SectionTitle from "@/app/components/elements/SectionTitle/SectionTitle";
+import PhotoListNavigation from "@/app/components/elements/PhotoListNavigation/PhotoListNavigation";
 import LazyAnimationImage from "@/app/components/elements/LazyAnimationImage/LazyAnimationImage";
 import Pagination from "@/app/components/elements/Pagination/Pagination";
 
+// Googleフォント
+const barlow = Barlow({
+  weight: ["300"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
 // コンポーネント
-export default function PhotoList({ sectionName, photoListData, totalPages, currentPage }) {
+export default function PhotoList({ category, sidekick, photoListData, totalPages, currentPage }) {
   // リード文
   let lead;
 
-  if(sectionName == 'photograph') {
+  if(category == 'photograph') {
     lead = 'ミラーレス一眼で撮った写真';
-  } else if(sectionName == 'snapshot') {
+  } else if(category == 'snapshot') {
     lead = 'スマートフォンで撮った写真'
   } else {
     lead = '';
@@ -26,8 +35,12 @@ export default function PhotoList({ sectionName, photoListData, totalPages, curr
 
   return (
     <section className={styles.wrapper}>
-      <SectionTitle title={sectionName} />
+      <SectionTitle title={category} />
       <p className={styles.lead}>{lead}</p>
+      <PhotoListNavigation
+        category={category}
+        sidekick={sidekick}
+      />
       <ul className={`${styles.list} ${isAnimation ? styles.animation : ''}`}>
         {photoListData.map((data, index) => (
           <li
@@ -35,7 +48,7 @@ export default function PhotoList({ sectionName, photoListData, totalPages, curr
             className={styles.listItem}
           >
             <Link
-              href={`/${sectionName}/preview/${data.id}/?list=${currentPage}`}
+              href={`/${category}/${sidekick}/preview/${data.id}/?list=${currentPage}`}
               className={styles.link}
               prefetch={true}
             >
@@ -43,7 +56,7 @@ export default function PhotoList({ sectionName, photoListData, totalPages, curr
                 <LazyAnimationImage
                   fill
                   src={data.photo.url}
-                  alt={`${sectionName}カテゴリの写真${index + 1}`}
+                  alt={`${category}カテゴリの写真${index + 1}`}
                   sizes="(max-width: 767px) 124px, (max-width: 1440px) 356px, 477px"
                 />
               </figure>
@@ -56,7 +69,8 @@ export default function PhotoList({ sectionName, photoListData, totalPages, curr
         ))}
       </ul>
       <Pagination
-        sectionName={sectionName}
+        category={category}
+        sidekick={sidekick}
         totalPages={totalPages}
         currentPage={currentPage}
       />

@@ -40,6 +40,23 @@
     grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 }
+.blankMessage {
+  font-size: 2rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  padding-top: 100px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 1s 0.5s;
+  @media (max-width: 999px) {
+    font-size: 1.6rem;
+    padding-top: 50px;
+  }
+  &.animation {
+    transform: translateY(0px);
+    opacity: 1;
+  }    
+}
 .listItem {
   padding-bottom: 100%;
   position: relative;

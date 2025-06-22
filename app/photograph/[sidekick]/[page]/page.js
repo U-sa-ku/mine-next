@@ -37,26 +37,32 @@ export const metadata = {
 
 // コンポーネント
 export default async function photograph({ params }) {
+  const sidekick = params.sidekick;
   const page = params.page ? parseInt(params.page, 10) : 1;
   const limit = 24;
-  const photographListData = await getPagingPhotoListData(limit, category, page);
+  const photographListData = await getPagingPhotoListData(limit, category, sidekick, page);
   const totalPages = Math.ceil(photographListData.totalCount / limit);
-  const snapshotListData  = await getPhotoListData(10, 'snapshot');
+  const snapshotListData = await getPhotoListData(10, 'snapshot', sidekick);
+  const snapshotListDataTotalCount = snapshotListData.totalCount;
 
   return (
     <>
       <PhotoList
-        sectionName={category}
+        category={category}
+        sidekick={sidekick}
         photoListData={photographListData.contents}
         totalPages={totalPages}
-        currentPage={page}      
+        currentPage={page}
       />
-      <div className="otherContents">
-        <PhotoSlider
-          sectionName='snapshot'
-          photoListData={snapshotListData.contents}
-        />
-      </div>    
+      {snapshotListDataTotalCount != 0 &&
+        <div className="otherContents">
+          <PhotoSlider
+            category='snapshot'
+            sidekick={sidekick}
+            photoListData={snapshotListData.contents}
+          />
+        </div>
+      }
     </>
   );
 }

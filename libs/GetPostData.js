@@ -1,10 +1,7 @@
 // photo API取得 (一覧)
 export const getPhotoListData = async (limit, category, sidekick) => {
-  let apiCategoryFilter = '';
-  let apiSidekickFilter = '';
-
-  if(category) apiCategoryFilter = `&filters=category[contains]${category}`;
-  if(category && sidekick) apiSidekickFilter = `[and]sidekick[contains]${sidekick}`;
+  const apiCategoryFilter = category ? `&filters=category[contains]${category}` : '';
+  const apiSidekickFilter = sidekick != 'all' && sidekick != undefined ? `[and]sidekick[contains]${sidekick}` : '';
 
   const photoListDataResponse = await fetch(
     `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}${apiCategoryFilter}${apiSidekickFilter}`, {
@@ -15,7 +12,7 @@ export const getPhotoListData = async (limit, category, sidekick) => {
         revalidate: 60
       }
     }
-  );  
+  );
 
   const photoListData = await photoListDataResponse.json();
 
@@ -23,10 +20,8 @@ export const getPhotoListData = async (limit, category, sidekick) => {
 }
 
 // photo API取得 (一覧 + ページング)
-export const getPagingPhotoListData = async (limit, category, page, sidekick) => {
-  let apiSidekickFilter = '';
-
-  if(sidekick) apiSidekickFilter = `[and]sidekick[contains]${sidekick}`;
+export const getPagingPhotoListData = async (limit, category, sidekick, page) => {
+  const apiSidekickFilter = sidekick != 'all' && sidekick != undefined ? `[and]sidekick[contains]${sidekick}` : '';
 
   const photoListDataResponse = await fetch(
     `${process.env.SERVICE_DOMAIN}/photo/?limit=${limit}&filters=category[contains]${category}${apiSidekickFilter}&offset=${(page - 1) * limit}`, {
@@ -45,7 +40,9 @@ export const getPagingPhotoListData = async (limit, category, page, sidekick) =>
 }
 
 // photo API取得 (詳細)
-export const getPhotoData = async (slug, category) => {
+export const getPhotoData = async (slug, category, sidekick) => {
+  const apiSidekickFilter = sidekick != 'all' && sidekick != undefined ? `[and]sidekick[contains]${sidekick}` : '';
+
   // 現在の投稿データ取得
   const currentPhotoDataResponse = await fetch(
     `${process.env.SERVICE_DOMAIN}/photo/${slug}`, {
@@ -62,7 +59,7 @@ export const getPhotoData = async (slug, category) => {
 
    // 前後の投稿データ取得
   const photoListDataResponse = await fetch(
-    `${process.env.SERVICE_DOMAIN}/photo/?limit=100&filters=category[contains]${category}&fields=id&orders=publishedAt`, {
+    `${process.env.SERVICE_DOMAIN}/photo/?limit=100&filters=category[contains]${category}${apiSidekickFilter}&fields=id&orders=publishedAt`, {
       headers: {
         'X-API-KEY': process.env.API_KEY,     
       },

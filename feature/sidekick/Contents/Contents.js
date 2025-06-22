@@ -50,14 +50,16 @@ export default function Contents({ sidekickData, photographListData, snapshotLis
         {sidekickData.movie.length >= 1 && isMovieRendering ? <Movie sidekickData={sidekickData} /> : null}
         {photographListData.contents.length >= 1 ?
           <PhotoSlider
-            sectionName='photograph'
+            category='photograph'
+            sidekick={sidekickData.id}
             photoListData={photographListData.contents}
           />
           : null
         }
         {snapshotListData.contents.length >= 1 ?
           <PhotoSlider
-            sectionName='snapshot'
+            category='snapshot'
+            sidekick={sidekickData.id}
             photoListData={snapshotListData.contents}
           /> 
           : null

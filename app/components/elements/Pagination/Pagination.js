@@ -10,7 +10,7 @@ const barlow = Barlow({
 });
 
 // コンポーネント
-export default function Pagination({ sectionName, totalPages, currentPage }) {
+export default function Pagination({ category, sidekick, totalPages, currentPage }) {
   return (
     <ul className={styles.wrapper}>
       {Array.from({ length: totalPages }, (_, index) => (
@@ -19,7 +19,7 @@ export default function Pagination({ sectionName, totalPages, currentPage }) {
           key={index}
         >
           <Link
-            href={`/${sectionName}/${index + 1}/`}
+            href={`/${category}/${sidekick}/${index + 1}/`}
             className={`${barlow.className} ${styles.link}`}
             prefetch={true}
           >
